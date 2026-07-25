@@ -1,10 +1,9 @@
-# مخطط نشر Render — نسخة مسطّحة (كل الملفات في الجذر)
 services:
   - type: web
     name: wisaltech-app
     runtime: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm install && npm rebuild better-sqlite3 --build-from-source
     startCommand: node server.js
     healthCheckPath: /api/health
     envVars:
