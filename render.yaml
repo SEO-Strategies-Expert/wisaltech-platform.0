@@ -1,0 +1,16 @@
+# مخطط نشر Render — نسخة مسطّحة (كل الملفات في الجذر)
+services:
+  - type: web
+    name: wisaltech-app
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: APP_URL
+        sync: false
+      - key: NODE_VERSION
+        value: "20"
