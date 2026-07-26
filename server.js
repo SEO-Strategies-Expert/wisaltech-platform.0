@@ -31,6 +31,8 @@ function servePWA(file) {
     res.type('html').send(html.replace('</head>', PWA_HEAD + '</head>'));
   };
 }
+app.get('/api/config', (req, res) => res.json({ cloudName: process.env.CLOUDINARY_CLOUD_NAME || '', uploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET || '' }));
+app.get('/attachments.html', servePWA(path.join(__dirname, 'attachments.html')));
 app.get('/app', servePWA(path.join(__dirname, 'app.html')));
 app.get('/login.html', servePWA(path.join(__dirname, 'login.html')));
 app.get('/portal.html', servePWA(path.join(__dirname, 'portal.html')));
