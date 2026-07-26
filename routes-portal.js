@@ -39,4 +39,8 @@ router.get('/reports', (req, res) =>
   }));
 
 // حماية إضافية: أي محاولة لطلب مورد بعميل آخر تُرفض ضمنيًا لأن كل الاستعلامات تستخدم req.tenant
+// مرفقات العميل (قراءة فقط لبورتاله)
+router.get('/attachments', (req, res) =>
+  res.json(db.prepare('SELECT id,title,kind,url,created_at FROM attachments WHERE client_id=? ORDER BY id DESC').all(req.tenant)));
+
 module.exports = router;
