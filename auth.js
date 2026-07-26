@@ -22,7 +22,8 @@ function signToken(user) {
 }
 function verifyToken(t) { try { return jwt.verify(t, JWT_SECRET); } catch { return null; } }
 
-// ── البريد (تحقّق/استرجاع) — يرسل فعليًا لو SMTP مضبوط، وإلا يسجّل الرابط في الطرفية ──
+// ── البريد — Brevo HTTP API (يتجاوز حظر منافذ SMTP على الاستضافة المجانية)، ثم SMTP، ثم تسجيل بالطرفية ──
+const MAIL_FROM = process.env.SMTP_FROM || 'no-reply@wisaltech.qa';
 let transporter = null;
 if (process.env.SMTP_HOST) {
   transporter = nodemailer.createTransport({
@@ -31,11 +32,33 @@ if (process.env.SMTP_HOST) {
   });
 }
 async function sendMail(to, subject, html) {
-  if (transporter) {
-    await transporter.sendMail({ from: process.env.SMTP_FROM || 'no-reply@wisaltech.qa', to, subject, html });
-    return { sent: true };
+  // 1) Brevo HTTP API عبر HTTPS (لا يتأثر بحظر منافذ SMTP الصادرة)
+  if (process.env.BREVO_API_KEY) {
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 15000);
+      const resp = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'api-key': process.env.BREVO_API_KEY, 'content-type': 'application/json', 'accept': 'application/json' },
+        body: JSON.stringify({ sender: { email: MAIL_FROM, name: 'وصال تك' }, to: [{ email: to }], subject, htmlContent: html }),
+        signal: ctrl.signal,
+      });
+      clearTimeout(timer);
+      if (resp.ok) return { sent: true };
+      const errText = await resp.text().catch(() => '');
+      console.error('[BREVO API] فشل الإرسال:', resp.status, errText);
+      return { sent: false, error: `brevo ${resp.status}` };
+    } catch (e) {
+      console.error('[BREVO API] استثناء:', e && e.message);
+      return { sent: false, error: 'brevo-exception' };
+    }
   }
-  // وضع التطوير: لا SMTP → نطبع الرابط بدل الإرسال
+  // 2) SMTP (يعمل فقط على استضافة تسمح بمنافذ SMTP)
+  if (transporter) {
+    try { await transporter.sendMail({ from: MAIL_FROM, to, subject, html }); return { sent: true }; }
+    catch (e) { console.error('[SMTP] فشل الإرسال:', e && e.message); return { sent: false, error: 'smtp' }; }
+  }
+  // 3) وضع التطوير: لا إعداد → نطبع الرابط بدل الإرسال
   console.log(`\n[DEV MAIL] إلى: ${to}\nالموضوع: ${subject}\n${html.replace(/<[^>]+>/g, ' ').trim()}\n`);
   return { sent: false, dev: true };
 }
