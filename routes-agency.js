@@ -111,4 +111,27 @@ router.post('/clients/:id/invite', async (req, res) => {
   });
 });
 
+// ── مرفقات المشاريع (رفع ملفات/صور/روابط لكل عميل) ──
+router.get('/attachments', (req, res) => {
+  const cid = req.query.client_id;
+  const sql = 'SELECT a.*, cl.name AS client FROM attachments a JOIN clients cl ON a.client_id=cl.id';
+  const rows = cid
+    ? db.prepare(sql + ' WHERE a.client_id=? ORDER BY a.id DESC').all(cid)
+    : db.prepare(sql + ' ORDER BY a.id DESC').all();
+  res.json(rows);
+});
+router.post('/attachments', (req, res) => {
+  const { client_id, title, kind, url } = req.body || {};
+  if (!client_id || !url) return res.status(400).json({ error: 'بيانات ناقصة' });
+  const info = db.prepare('INSERT INTO attachments(client_id,title,kind,url,created_by) VALUES(?,?,?,?,?)')
+    .run(client_id, title || null, kind || 'link', url, req.user.uid);
+  A.audit(req.user.uid, 'add_attachment', 'attachment', { client_id, kind });
+  res.json({ ok: true, id: info.lastInsertRowid });
+});
+router.delete('/attachments/:id', (req, res) => {
+  db.prepare('DELETE FROM attachments WHERE id=?').run(req.params.id);
+  A.audit(req.user.uid, 'delete_attachment', 'attachment', { id: req.params.id });
+  res.json({ ok: true });
+});
+
 module.exports = router;
