@@ -47,6 +47,16 @@ CREATE TABLE IF NOT EXISTS audit_log(
   meta      TEXT,
   ts        TEXT DEFAULT (datetime('now'))
 );
+
+CREATE TABLE IF NOT EXISTS attachments(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  client_id INTEGER,
+  title TEXT,
+  kind TEXT,
+  url TEXT NOT NULL,
+  created_by INTEGER,
+  created_at TEXT DEFAULT (datetime('now'))
+);
 `);
 
 function audit(userId, action, entity, meta) {
