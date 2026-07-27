@@ -672,7 +672,11 @@ boot();
     }).catch(function(e){ T(e.message,true); });
   }
   function save(cid,title,kind,url){ return api('/api/agency/attachments',{method:'POST',body:JSON.stringify({client_id:+cid,title:title,kind:kind,url:url})}); }
-  function upload(file,onp){
+  var MAXB=10485760,TARGET=9700000;
+function compressImage(file){return new Promise(function(res){var url=URL.createObjectURL(file),img=new Image();img.onload=function(){var w=img.naturalWidth||img.width,h=img.naturalHeight||img.height;var scales=[1,0.85,0.7,0.55,0.42,0.32],quals=[0.85,0.72,0.6,0.5,0.4];var si=0,qi=0;function done(blob){URL.revokeObjectURL(url);if(!blob){res(file);return;}var name=(file.name||'image').replace(/\.[^.]+$/,'')+'.jpg';res(new File([blob],name,{type:'image/jpeg'}));}function step(){var s=scales[si],q=quals[qi];var cw=Math.max(1,Math.round(w*s)),ch=Math.max(1,Math.round(h*s));var c=document.createElement('canvas');c.width=cw;c.height=ch;var ctx=c.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,cw,ch);ctx.drawImage(img,0,0,cw,ch);c.toBlob(function(b){var last=(si===scales.length-1&&qi===quals.length-1);if(b&&(b.size<=TARGET||last))return done(b);qi++;if(qi>=quals.length){qi=0;si++;}if(si>=scales.length)return done(b);step();},'image/jpeg',q);}step();};img.onerror=function(){URL.revokeObjectURL(url);res(file);};img.src=url;});}
+function prep(file){if(file.size<=MAXB)return Promise.resolve(file);if(!/^image\//.test(file.type||''))return Promise.resolve(file);return compressImage(file).catch(function(){return file;});}
+function upload(file,onp){return prep(file).then(function(_f){return _doUpload(_f,onp);});}
+function _doUpload(file,onp){
     if(!CFG||!CFG.cloudName||!CFG.uploadPreset) return Promise.reject(new Error('رفع الملفات غير مُفعّل'));
     return new Promise(function(res,rej){ var x=new XMLHttpRequest(); x.open('POST','https://api.cloudinary.com/v1_1/'+CFG.cloudName+'/auto/upload'); x.upload.onprogress=function(e){ if(e.lengthComputable&&onp)onp(e.loaded/e.total); }; x.onload=function(){ try{var d=JSON.parse(x.responseText); if(x.status>=200&&x.status<300&&d.secure_url)res(d); else rej(new Error((d.error&&d.error.message)||'فشل الرفع'));}catch(e){rej(new Error('رد غير متوقع'));} }; x.onerror=function(){rej(new Error('تعذّر الاتصال بـ Cloudinary'));}; var fd=new FormData(); fd.append('file',file); fd.append('upload_preset',CFG.uploadPreset); x.send(fd); });
   }
