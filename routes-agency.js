@@ -112,6 +112,47 @@ router.post('/clients/:id/invite', async (req, res) => {
 });
 
 // ── مرفقات المشاريع (رفع ملفات/صور/روابط لكل عميل) ──
+router.post('/clients', (req, res) => {
+  try {
+    const b = req.body || {};
+    const name = (b.name || '').toString().trim();
+    if (!name) return res.status(400).json({ error: 'اسم العميل مطلوب' });
+    const cols = db.prepare("SELECT name, type AS ty, [notnull] AS nn, dflt_value AS dv, pk FROM pragma_table_info('clients')").all();
+    const has = {}; cols.forEach((c) => { has[c.name] = c; });
+    const data = {};
+    if (has.name) data.name = name;
+    if (has.sector && b.sector) data.sector = b.sector.toString().trim();
+    if (has.country && b.country) data.country = b.country.toString().trim();
+    if (has.status) data.status = (b.status || 'active').toString();
+    cols.forEach((c) => {
+      if (c.pk) return;
+      if (c.name in data) return;
+      if (c.nn && c.dv === null) data[c.name] = /INT|REAL|NUM/i.test(c.ty || '') ? 0 : '';
+    });
+    const keys = Object.keys(data);
+    const stmt = db.prepare('INSERT INTO clients (' + keys.join(',') + ') VALUES (' + keys.map(() => '?').join(',') + ')');
+    const info = stmt.run(...keys.map((k) => data[k]));
+    const id = Number(info.lastInsertRowid);
+    A.audit(req.user.uid, 'create', 'client', { id: id, name: name });
+    const row = db.prepare('SELECT * FROM clients WHERE id=?').get(id);
+    res.json(row || { id: id, name: name });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+router.delete('/clients/:id', (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    try { db.prepare('DELETE FROM attachments WHERE client_id=?').run(id); } catch (e) {}
+    const info = db.prepare('DELETE FROM clients WHERE id=?').run(id);
+    A.audit(req.user.uid, 'delete', 'client', { id: id });
+    res.json({ ok: true, deleted: info.changes });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 router.get('/attachments', (req, res) => {
   const cid = req.query.client_id;
   const sql = 'SELECT a.*, cl.name AS client FROM attachments a JOIN clients cl ON a.client_id=cl.id';
