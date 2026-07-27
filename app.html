@@ -720,6 +720,57 @@ function _doUpload(file,onp){
   cov.querySelector('#wtcSave').addEventListener('click', doSave);
   document.addEventListener('click', function(e){ var b=(e.target&&e.target.closest)? e.target.closest('.newbtn'):null; if(!b) return; e.preventDefault(); e.stopPropagation(); openC(); }, true);
 })();
+;(function(){
+  var CID=null, obsSet=false;
+  function heading(rx){ var hs=document.querySelectorAll('h1,h2,h3'); for(var i=0;i<hs.length;i++){ if(rx.test((hs[i].textContent||'').trim())) return hs[i]; } return null; }
+  function host(){
+    var h=document.getElementById('wtInlineAtt'); if(h) return h;
+    var after=null, before=null;
+    var att=document.querySelector('.attach');
+    if(att && att.parentElement && att.parentElement.parentElement) after=att.parentElement.parentElement;
+    if(!after){ var proj=heading(/المشاريع/); if(proj) before=proj.closest('section')||proj.parentElement; }
+    if(!after && !before){ var works=heading(/الأعمال والتصميمات/); if(works) after=works.closest('section')||works.parentElement; }
+    if(!after && !before) return null;
+    h=document.createElement('div'); h.id='wtInlineAtt'; h.style.cssText='margin:16px 0';
+    if(before) before.parentNode.insertBefore(h, before); else after.parentNode.insertBefore(h, after.nextSibling);
+    return h;
+  }
+  function render(cid){
+    cid=cid||CID; if(!cid || !tok()) return;
+    var h=host(); if(!h) return;
+    api('/api/agency/attachments?client_id='+cid).then(function(list){
+      var box=document.createElement('div');
+      box.style.cssText='border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px;background:rgba(255,255,255,.02);direction:rtl';
+      var hd=document.createElement('div'); hd.style.cssText='display:flex;justify-content:space-between;align-items:center;margin-bottom:10px';
+      var ttl=document.createElement('h3'); ttl.style.cssText='margin:0;font-size:16px;color:#e9ecf1'; ttl.textContent='مرفقات العميل ('+list.length+')';
+      var add=document.createElement('button'); add.className='wtbtn'; add.textContent='+ إضافة مرفق'; add.onclick=function(){ openAttach(); };
+      hd.appendChild(ttl); hd.appendChild(add); box.appendChild(hd);
+      if(!list.length){ var em=document.createElement('div'); em.style.cssText='color:#9aa3af;font-size:13px;padding:6px 0'; em.textContent='لا مرفقات بعد — اضغط "إضافة مرفق" لرفع صور/ملفات أو روابط.'; box.appendChild(em); }
+      else {
+        var grid=document.createElement('div'); grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px';
+        list.forEach(function(a){
+          var img=a.kind==='image' || /(?:png|jpe?g|gif|webp|svg)$/i.test(a.url||'');
+          var card=document.createElement('div'); card.className='wtcard';
+          var del=document.createElement('button'); del.className='dl'; del.title='حذف'; del.textContent='✕';
+          var link=document.createElement('a'); link.href=a.url; link.target='_blank'; link.rel='noopener';
+          var thumb=document.createElement('div'); thumb.className='th';
+          if(img) thumb.style.backgroundImage="url('"+a.url+"')"; else thumb.textContent=(a.kind==='link'?'🔗':'📄');
+          link.appendChild(thumb);
+          var mt=document.createElement('div'); mt.className='mt'; mt.textContent=(a.title||(a.url||'').split('/').pop());
+          card.appendChild(del); card.appendChild(link); card.appendChild(mt);
+          del.onclick=function(ev){ ev.preventDefault(); if(!confirm('حذف المرفق؟')) return; api('/api/agency/attachments/'+a.id,{method:'DELETE'}).then(function(){ render(cid); }).catch(function(e){ T(e.message,true); }); };
+          grid.appendChild(card);
+        });
+        box.appendChild(grid);
+      }
+      h.innerHTML=''; h.appendChild(box);
+    }).catch(function(){});
+  }
+  function setupObs(){ if(obsSet) return; var ov=document.getElementById('wtattOv'); if(!ov) return; obsSet=true; try{ new MutationObserver(function(){ if(!ov.classList.contains('open') && CID) setTimeout(function(){ render(CID); }, 250); }).observe(ov,{attributes:true,attributeFilter:['class']}); }catch(e){} }
+  function hookOpen(){ if(typeof window.open_client==='function' && !window.open_client.__wt){ var orig=window.open_client; window.open_client=function(id){ var r=orig.apply(this,arguments); CID=id; setTimeout(function(){ setupObs(); render(id); }, 350); return r; }; window.open_client.__wt=true; } }
+  hookOpen();
+  var tries=0, iv=setInterval(function(){ tries++; hookOpen(); if((window.open_client&&window.open_client.__wt)||tries>25) clearInterval(iv); }, 300);
+})();
 })();
 
 </script>
