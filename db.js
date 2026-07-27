@@ -2,6 +2,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
+try { require('./persist').restoreSync(__dirname); } catch (e) { console.error('restore skip', e && e.message); }
 const db = new Database(path.join(__dirname, 'wisaltech.db'));
 db.pragma('journal_mode = DELETE');
 db.pragma('foreign_keys = ON');
@@ -65,5 +66,7 @@ function audit(userId, action, entity, meta) {
       .run(userId || null, action, entity || null, meta ? JSON.stringify(meta) : null);
   } catch (e) { /* لا نُفشل الطلب بسبب التدقيق */ }
 }
+
+try { require('./persist').startBackups(db, __dirname); } catch (e) { console.error('backup init skip', e && e.message); }
 
 module.exports = { db, audit };
