@@ -700,6 +700,26 @@ function _doUpload(file,onp){
     drop.addEventListener('drop',function(e){ if(e.dataTransfer.files.length) handle([].slice.call(e.dataTransfer.files)); });
     $('wtAddLink').onclick=function(){ var u=$('wtUrl').value.trim(); if(!u){T('اكتب الرابط',true);return;} save($('wtSel').value,$('wtTitle').value.trim()||null,'link',u).then(function(){ $('wtUrl').value='';$('wtTitle').value=''; T('تمت الإضافة'); load(); }).catch(function(e){T(e.message,true);}); };
   }
+;(function(){
+  var cov=document.createElement('div'); cov.id='wtcOv';
+  cov.style.cssText='position:fixed;inset:0;z-index:100001;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;font-family:Tajawal,sans-serif';
+  cov.innerHTML='<div style="width:min(520px,94vw);background:#0c0c0e;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px;color:#e9ecf1;direction:rtl">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h3 style="margin:0;font-size:17px">إضافة عميل / شركة جديدة</h3><button id="wtcX" style="background:transparent;border:1px solid rgba(255,255,255,.14);color:#e9ecf1;border-radius:10px;padding:6px 10px;cursor:pointer;font:inherit">إغلاق ✕</button></div>'
+    +'<label style="display:block;margin-top:12px;color:#9aa3af;font-size:13px">اسم العميل / الشركة *</label><input id="wtcName" style="width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#e9ecf1;font:inherit">'
+    +'<label style="display:block;margin-top:10px;color:#9aa3af;font-size:13px">المجال (اختياري)</label><input id="wtcSector" placeholder="مثال: تعليم، عقارات…" style="width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#e9ecf1;font:inherit">'
+    +'<label style="display:block;margin-top:10px;color:#9aa3af;font-size:13px">الدولة (اختياري)</label><input id="wtcCountry" placeholder="مثال: قطر" style="width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#e9ecf1;font:inherit">'
+    +'<div style="margin-top:16px"><button id="wtcSave" style="background:linear-gradient(135deg,#c8f94e,#cbfb5a);color:#0a0b0e;border:none;border-radius:10px;padding:11px 20px;font-weight:800;cursor:pointer;font:inherit">حفظ العميل</button></div>'
+    +'</div>';
+  function mount(){ document.body.appendChild(cov); }
+  if(document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
+  function openC(){ if(!tok()){ T('سجّل الدخول في اللوحة أولًا', true); return; } cov.querySelector('#wtcName').value=''; cov.querySelector('#wtcSector').value=''; cov.querySelector('#wtcCountry').value=''; cov.style.display='flex'; setTimeout(function(){ cov.querySelector('#wtcName').focus(); }, 50); }
+  function closeC(){ cov.style.display='none'; }
+  cov.addEventListener('click', function(e){ if(e.target===cov || (e.target && e.target.id==='wtcX')) closeC(); });
+  function doSave(){ var name=cov.querySelector('#wtcName').value.trim(); if(!name){ T('اكتب اسم العميل', true); return; } var body={ name:name, sector:cov.querySelector('#wtcSector').value.trim(), country:cov.querySelector('#wtcCountry').value.trim(), status:'active' }; api('/api/agency/clients',{method:'POST',body:JSON.stringify(body)}).then(function(){ T('تمت إضافة: '+name); closeC(); setTimeout(function(){ location.reload(); }, 800); }).catch(function(e){ T(e.message, true); }); }
+  cov.addEventListener('keydown', function(e){ if(e.key==='Enter') doSave(); });
+  cov.querySelector('#wtcSave').addEventListener('click', doSave);
+  document.addEventListener('click', function(e){ var b=(e.target&&e.target.closest)? e.target.closest('.newbtn'):null; if(!b) return; e.preventDefault(); e.stopPropagation(); openC(); }, true);
+})();
 })();
 
 </script>
