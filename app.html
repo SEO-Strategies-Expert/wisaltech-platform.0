@@ -619,16 +619,45 @@ boot();
   function T(m,e){ toast.textContent=m; toast.style.borderColor=e?'#ff6b6b':'rgba(255,255,255,.14)'; toast.style.display='block'; clearTimeout(toast._t); toast._t=setTimeout(function(){toast.style.display='none';}, e?4000:2200); }
   function $(id){ return document.getElementById(id); }
 
-  btn.addEventListener('click', function(){ if(!tok()){ T('سجّل الدخول في اللوحة أولًا', true); return; } ov.classList.add('open'); boot(); });
+  btn.addEventListener('click', function(){ openAttach(); });
   ov.addEventListener('click', function(e){ if(e.target===ov) ov.classList.remove('open'); });
 
   function boot(){
     if(!CFG){ api('/api/config').then(function(c){ CFG=c; }).catch(function(){}); }
-    api('/api/agency/clients').then(function(list){
+    return api('/api/agency/clients').then(function(list){
       CLIENTS=list; var sel=$('wtSel'); sel.innerHTML=list.map(function(c){return '<option value="'+c.id+'">'+c.name+'</option>';}).join('');
       sel.onchange=load; load();
     }).catch(function(e){ T(e.message,true); });
   }
+  // فتح النافذة وتحديد العميل المعروض حاليًا تلقائيًا
+  function openAttach(){
+    if(!tok()){ T('سجّل الدخول في اللوحة أولًا', true); return; }
+    ov.classList.add('open');
+    boot().then(function(){ autoPick(); });
+  }
+  function autoPick(){
+    try{
+      var sel=$('wtSel'); if(!sel||!sel.options.length) return;
+      var names={}; [].forEach.call(sel.options, function(o){ names[(o.textContent||'').trim()]=o.value; });
+      var all=document.body.querySelectorAll('div,span,strong,h1,h2,h3,a,td,b,p');
+      for(var i=0;i<all.length;i++){ var el=all[i];
+        if(el.closest('#wtattOv')||el.id==='wtattBtn') continue;
+        if(el.children.length) continue;
+        var t=(el.textContent||'').trim();
+        if(t && Object.prototype.hasOwnProperty.call(names,t)){
+          var r=el.getBoundingClientRect();
+          if(r.width>0 && r.height>0){ sel.value=names[t]; load(); return; }
+        }
+      }
+    }catch(e){}
+  }
+  // ربط كروت الرفع القديمة (.attach) بالرفع الفعلي بدل الإشعار
+  document.addEventListener('click', function(e){
+    var el = (e.target && e.target.closest) ? e.target.closest('.attach') : null;
+    if(!el) return;
+    e.preventDefault(); e.stopPropagation();
+    openAttach();
+  }, true);
   function load(){
     var cid=$('wtSel').value;
     api('/api/agency/attachments?client_id='+cid).then(function(list){
