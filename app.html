@@ -567,4 +567,107 @@ async function boot(){
  buildNav();render();
 }
 boot();
-</script></body></html>
+</script><script>
+/* ===== وصال تك — ودجت مرفقات العميل (مدمجة في اللوحة) ===== */
+(function(){
+  if (window.__wtAttLoaded) return; window.__wtAttLoaded = true;
+  var API = location.origin, TK = 'wt_token', CFG = null, CLIENTS = [];
+  function tok(){ return localStorage.getItem(TK) || ''; }
+  function api(path, opts){ opts = opts || {}; opts.headers = Object.assign({'Content-Type':'application/json'}, opts.headers||{}); var t = tok(); if(t) opts.headers['Authorization'] = 'Bearer ' + t; return fetch(API+path, opts).then(function(r){ return r.json().catch(function(){return null;}).then(function(d){ if(!r.ok) throw new Error((d&&d.error)||('خطأ '+r.status)); return d; }); }); }
+
+  var css = document.createElement('style');
+  css.textContent = ''
+   + '#wtattBtn{position:fixed;bottom:22px;left:22px;z-index:99998;background:linear-gradient(135deg,#c8f94e,#cbfb5a);color:#0a0b0e;border:none;border-radius:999px;padding:12px 18px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35);font-family:Tajawal,sans-serif}'
+   + '#wtattOv{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;font-family:Tajawal,sans-serif}'
+   + '#wtattOv.open{display:flex}'
+   + '#wtattP{width:min(720px,94vw);max-height:88vh;overflow:auto;background:#0c0c0e;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px;color:#e9ecf1;direction:rtl}'
+   + '#wtattP h3{margin:0 0 4px;font-size:17px}'
+   + '.wtmut{color:#9aa3af;font-size:13px}'
+   + '.wtrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}'
+   + '#wtattP select,#wtattP input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#e9ecf1;font:inherit;outline:none}'
+   + '#wtattP input:focus,#wtattP select:focus{border-color:#c8f94e}'
+   + '.wtbtn{background:linear-gradient(135deg,#c8f94e,#cbfb5a);color:#0a0b0e;border:none;border-radius:10px;padding:10px 16px;font-weight:800;cursor:pointer;font:inherit}'
+   + '.wtghost{background:transparent;border:1px solid rgba(255,255,255,.14);color:#e9ecf1;border-radius:10px;padding:8px 12px;cursor:pointer;font:inherit}'
+   + '#wtDrop{margin-top:10px;border:1.5px dashed rgba(255,255,255,.14);border-radius:14px;padding:22px;text-align:center;cursor:pointer;background:rgba(255,255,255,.02)}'
+   + '#wtDrop.over{border-color:#c8f94e;background:rgba(200,249,78,.05)}'
+   + '#wtGrid{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}'
+   + '.wtcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;position:relative}'
+   + '.wtcard .th{height:92px;background:#000 center/cover no-repeat;display:grid;place-items:center;color:#9aa3af;font-size:28px}'
+   + '.wtcard .mt{padding:7px 9px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+   + '.wtcard .dl{position:absolute;top:5px;left:5px;background:rgba(0,0,0,.55);border:none;color:#ff6b6b;width:24px;height:24px;border-radius:7px;cursor:pointer}'
+   + '#wtBar{height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-top:10px;display:none}'
+   + '#wtBar>i{display:block;height:100%;width:0;background:#c8f94e;transition:.2s}'
+   + '#wtToast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#141519;border:1px solid rgba(255,255,255,.14);padding:10px 16px;border-radius:10px;font-size:13px;display:none;z-index:100000;font-family:Tajawal,sans-serif;color:#e9ecf1}';
+  document.head.appendChild(css);
+
+  var btn = document.createElement('button'); btn.id='wtattBtn'; btn.textContent='📎 مرفقات العميل';
+  var ov = document.createElement('div'); ov.id='wtattOv';
+  ov.innerHTML = '<div id="wtattP">'
+    + '<div class="wtrow" style="justify-content:space-between"><div><h3>مرفقات العميل</h3><div class="wtmut">ارفع صور/ملفات أو أضف روابط لكل عميل — بتظهر للعميل في بورتاله.</div></div><button class="wtghost" id="wtClose">إغلاق ✕</button></div>'
+    + '<label class="wtmut" style="display:block;margin-top:12px">اختر العميل</label><select id="wtSel"></select>'
+    + '<div id="wtWarn" class="wtmut" style="color:#ff6b6b;margin-top:8px;display:none"></div>'
+    + '<div id="wtDrop">🗂️ اسحب ملف/صورة هنا أو اضغط للاختيار<div class="wtmut" style="margin-top:3px">يتم الرفع والتخزين فعليًا</div><input id="wtFile" type="file" multiple style="display:none"></div>'
+    + '<div id="wtBar"><i></i></div>'
+    + '<label class="wtmut" style="display:block;margin-top:12px">أو أضف رابط</label>'
+    + '<div class="wtrow"><input id="wtUrl" type="url" placeholder="https://…" style="flex:1;min-width:180px"><input id="wtTitle" type="text" placeholder="عنوان (اختياري)" style="flex:1;min-width:140px"><button class="wtbtn" id="wtAddLink">إضافة</button></div>'
+    + '<div id="wtGrid"></div><div id="wtEmpty" class="wtmut" style="text-align:center;padding:18px;display:none">لا مرفقات لهذا العميل بعد.</div>'
+    + '</div>';
+  var toast = document.createElement('div'); toast.id='wtToast';
+  function ready(){ document.body.appendChild(btn); document.body.appendChild(ov); document.body.appendChild(toast); wire(); }
+  if(document.body) ready(); else document.addEventListener('DOMContentLoaded', ready);
+
+  function T(m,e){ toast.textContent=m; toast.style.borderColor=e?'#ff6b6b':'rgba(255,255,255,.14)'; toast.style.display='block'; clearTimeout(toast._t); toast._t=setTimeout(function(){toast.style.display='none';}, e?4000:2200); }
+  function $(id){ return document.getElementById(id); }
+
+  btn.addEventListener('click', function(){ if(!tok()){ T('سجّل الدخول في اللوحة أولًا', true); return; } ov.classList.add('open'); boot(); });
+  ov.addEventListener('click', function(e){ if(e.target===ov) ov.classList.remove('open'); });
+
+  function boot(){
+    if(!CFG){ api('/api/config').then(function(c){ CFG=c; }).catch(function(){}); }
+    api('/api/agency/clients').then(function(list){
+      CLIENTS=list; var sel=$('wtSel'); sel.innerHTML=list.map(function(c){return '<option value="'+c.id+'">'+c.name+'</option>';}).join('');
+      sel.onchange=load; load();
+    }).catch(function(e){ T(e.message,true); });
+  }
+  function load(){
+    var cid=$('wtSel').value;
+    api('/api/agency/attachments?client_id='+cid).then(function(list){
+      var g=$('wtGrid'); g.innerHTML=''; $('wtEmpty').style.display=list.length?'none':'block';
+      list.forEach(function(a){
+        var img = a.kind==='image' || /\.(png|jpe?g|gif|webp|svg)$/i.test(a.url||'');
+        var el=document.createElement('div'); el.className='wtcard';
+        el.innerHTML='<button class="dl" title="حذف">✕</button><a href="'+a.url+'" target="_blank" rel="noopener"><div class="th" '+(img?'style="background-image:url(\''+a.url+'\')"':'')+'>'+(img?'':(a.kind==='link'?'🔗':'📄'))+'</div></a><div class="mt">'+(a.title||a.url.split('/').pop())+'</div>';
+        el.querySelector('.dl').onclick=function(ev){ ev.preventDefault(); if(!confirm('حذف المرفق؟'))return; api('/api/agency/attachments/'+a.id,{method:'DELETE'}).then(function(){ T('تم الحذف'); load(); }).catch(function(e){T(e.message,true);}); };
+        g.appendChild(el);
+      });
+    }).catch(function(e){ T(e.message,true); });
+  }
+  function save(cid,title,kind,url){ return api('/api/agency/attachments',{method:'POST',body:JSON.stringify({client_id:+cid,title:title,kind:kind,url:url})}); }
+  function upload(file,onp){
+    if(!CFG||!CFG.cloudName||!CFG.uploadPreset) return Promise.reject(new Error('رفع الملفات غير مُفعّل'));
+    return new Promise(function(res,rej){ var x=new XMLHttpRequest(); x.open('POST','https://api.cloudinary.com/v1_1/'+CFG.cloudName+'/auto/upload'); x.upload.onprogress=function(e){ if(e.lengthComputable&&onp)onp(e.loaded/e.total); }; x.onload=function(){ try{var d=JSON.parse(x.responseText); if(x.status>=200&&x.status<300&&d.secure_url)res(d); else rej(new Error((d.error&&d.error.message)||'فشل الرفع'));}catch(e){rej(new Error('رد غير متوقع'));} }; x.onerror=function(){rej(new Error('تعذّر الاتصال بـ Cloudinary'));}; var fd=new FormData(); fd.append('file',file); fd.append('upload_preset',CFG.uploadPreset); x.send(fd); });
+  }
+  function handle(files){
+    var cid=$('wtSel').value, bar=$('wtBar'), fill=bar.querySelector('i');
+    (function next(i){
+      if(i>=files.length){ bar.style.display='none'; load(); return; }
+      bar.style.display='block'; fill.style.width='0%';
+      upload(files[i],function(p){fill.style.width=Math.round(p*100)+'%';}).then(function(d){
+        return save(cid, files[i].name, d.resource_type==='image'?'image':'file', d.secure_url);
+      }).then(function(){ T('تم رفع: '+files[i].name); next(i+1); }).catch(function(e){ T(e.message,true); next(i+1); });
+    })(0);
+  }
+  document.addEventListener('click', function(e){ if(e.target && e.target.id==='wtClose') ov.classList.remove('open'); });
+  function wire(){
+    var drop=$('wtDrop'), file=$('wtFile'); if(!drop||drop._w) return; drop._w=1;
+    drop.onclick=function(){ file.click(); };
+    file.onchange=function(){ if(file.files.length) handle([].slice.call(file.files)); file.value=''; };
+    ['dragover','dragenter'].forEach(function(ev){ drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add('over');}); });
+    ['dragleave','drop'].forEach(function(ev){ drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove('over');}); });
+    drop.addEventListener('drop',function(e){ if(e.dataTransfer.files.length) handle([].slice.call(e.dataTransfer.files)); });
+    $('wtAddLink').onclick=function(){ var u=$('wtUrl').value.trim(); if(!u){T('اكتب الرابط',true);return;} save($('wtSel').value,$('wtTitle').value.trim()||null,'link',u).then(function(){ $('wtUrl').value='';$('wtTitle').value=''; T('تمت الإضافة'); load(); }).catch(function(e){T(e.message,true);}); };
+  }
+})();
+
+</script>
+</body></html>
