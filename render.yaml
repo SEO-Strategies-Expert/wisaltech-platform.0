@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: wisaltech-app
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node --experimental-sqlite server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: APP_URL
+        sync: false
+      - key: NODE_VERSION
+        value: "22"
