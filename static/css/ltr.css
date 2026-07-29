@@ -1,0 +1,2 @@
+/* LTR overrides */
+html[dir="ltr"] { direction: ltr; }
