@@ -1,2 +1,57 @@
-/* LTR overrides */
-html[dir="ltr"] { direction: ltr; }
+/* LTR Overrides & English Typography */
+html[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="ltr"] body,
+html[dir="ltr"] p,
+html[dir="ltr"] h1,
+html[dir="ltr"] h2,
+html[dir="ltr"] h3,
+html[dir="ltr"] h4,
+html[dir="ltr"] h5,
+html[dir="ltr"] h6,
+html[dir="ltr"] a,
+html[dir="ltr"] span,
+html[dir="ltr"] button,
+html[dir="ltr"] input,
+html[dir="ltr"] textarea,
+html[dir="ltr"] select,
+html[dir="ltr"] li,
+html[dir="ltr"] td,
+html[dir="ltr"] th {
+  font-family: "Titillium Web", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Preserve Font Awesome & icon fonts */
+html[dir="ltr"] i.fas,
+html[dir="ltr"] i.far,
+html[dir="ltr"] i.fab,
+html[dir="ltr"] i.fa,
+html[dir="ltr"] i.fa-solid,
+html[dir="ltr"] i.fa-regular,
+html[dir="ltr"] i.fa-brands,
+html[dir="ltr"] [class^="fa-"],
+html[dir="ltr"] [class*=" fa-"] {
+  font-family: var(--fa-style-family, "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome") !important;
+}
+
+/* Common LTR direction adjustments */
+html[dir="ltr"] .text-right {
+  text-align: left !important;
+}
+
+html[dir="ltr"] .text-left {
+  text-align: right !important;
+}
+
+html[dir="ltr"] .ml-auto {
+  margin-right: auto !important;
+  margin-left: unset !important;
+}
+
+html[dir="ltr"] .mr-auto {
+  margin-left: auto !important;
+  margin-right: unset !important;
+}
