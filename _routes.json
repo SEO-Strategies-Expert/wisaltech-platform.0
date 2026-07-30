@@ -1,12 +1,14 @@
 {
   "version": 1,
   "include": [
-    "/*"
+    "/en",
+    "/en/*",
+    "/en/**"
   ],
   "exclude": [
-    "/en/*",
-    "/en/**",
     "/static/*",
-    "/images/*"
+    "/static/**",
+    "/images/*",
+    "/images/**"
   ]
 }
