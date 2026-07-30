@@ -1,0 +1,330 @@
+{
+  "home": {
+    "trust_heading": "Selected Brands & Project Experience",
+    "trust_intro": "A selection of Wisal Tech projects and prior founder/team experience across technology, education, healthcare, real estate, retail and professional services.",
+    "company_stats": [
+      {
+        "value": "10+",
+        "label": "Years of practical experience"
+      },
+      {
+        "value": "5",
+        "label": "Regional markets served"
+      },
+      {
+        "value": "6",
+        "label": "Connected solution pillars"
+      },
+      {
+        "value": "360°",
+        "label": "From brand to measurable growth"
+      }
+    ],
+    "market_countries": [
+      "Qatar",
+      "Türkiye",
+      "Saudi Arabia",
+      "Yemen",
+      "Malaysia"
+    ]
+  },
+  "results": [
+    {
+      "project": "Itqan Education",
+      "metric": "975%",
+      "label": "Growth in organic clicks",
+      "context": "From 987 to 10.6K clicks",
+      "attribution": "Prior founder/team experience",
+      "publish": true
+    },
+    {
+      "project": "Itqan Education",
+      "metric": "453%",
+      "label": "Growth in search impressions",
+      "context": "From 109K to 603K impressions",
+      "attribution": "Prior founder/team experience",
+      "publish": true
+    },
+    {
+      "project": "Fiper Trading",
+      "metric": "43.4K",
+      "label": "Organic clicks in six months",
+      "context": "1.99M search impressions",
+      "attribution": "Prior founder experience",
+      "publish": true
+    },
+    {
+      "project": "Turkey Luxury Clinics",
+      "metric": "1,200",
+      "label": "Daily organic visits",
+      "context": "Growth from 30 visits per day in four months",
+      "attribution": "Prior founder/team experience",
+      "publish": true
+    }
+  ],
+  "testimonials": [
+    {
+      "publish": false,
+      "quote": "",
+      "name": "",
+      "role": "",
+      "company": "",
+      "service": "",
+      "source": ""
+    },
+    {
+      "publish": false,
+      "quote": "",
+      "name": "",
+      "role": "",
+      "company": "",
+      "service": "",
+      "source": ""
+    },
+    {
+      "publish": false,
+      "quote": "",
+      "name": "",
+      "role": "",
+      "company": "",
+      "service": "",
+      "source": ""
+    }
+  ],
+  "reviews": [
+    {
+      "publish": false,
+      "platform": "Google",
+      "rating": null,
+      "text": "",
+      "reviewer": "",
+      "date": "",
+      "screenshot": ""
+    },
+    {
+      "publish": false,
+      "platform": "Instagram",
+      "rating": null,
+      "text": "",
+      "reviewer": "",
+      "date": "",
+      "screenshot": ""
+    }
+  ],
+  "brands": [
+    {
+      "slug": "batal-optics",
+      "name": "Batal Optics",
+      "source": "cover-بطلsite(1).jpg",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/pending-classification/batal-optics.webp",
+      "gray": "/assets/pending-classification/batal-optics-gray.webp",
+      "white": "/assets/pending-classification/batal-optics-white.webp",
+      "source_file": "cover-بطلsite(1).jpg"
+    },
+    {
+      "slug": "imtilak-turkey",
+      "name": "Imtilak Turkey",
+      "source": "imtilak-logo-turkey(1).svg",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/imtilak-turkey.webp",
+      "gray": "/assets/founder-experience/imtilak-turkey-gray.webp",
+      "white": "/assets/founder-experience/imtilak-turkey-white.webp",
+      "source_file": "imtilak-logo-turkey(1).svg"
+    },
+    {
+      "slug": "livist-group",
+      "name": "Livist Group",
+      "source": "livist-group-logo(1).png",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/livist-group.webp",
+      "gray": "/assets/founder-experience/livist-group-gray.webp",
+      "white": "/assets/founder-experience/livist-group-white.webp",
+      "source_file": "livist-group-logo(1).png"
+    },
+    {
+      "slug": "fiper",
+      "name": "Fiper",
+      "source": "logo (1)(1).png",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/fiper.webp",
+      "gray": "/assets/founder-experience/fiper-gray.webp",
+      "white": "/assets/founder-experience/fiper-white.webp",
+      "source_file": "logo (1)(1).png"
+    },
+    {
+      "slug": "itqan-education",
+      "name": "Itqan Education",
+      "source": "logo (1)(1).svg",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/itqan-education.webp",
+      "gray": "/assets/founder-experience/itqan-education-gray.webp",
+      "white": "/assets/founder-experience/itqan-education-white.webp",
+      "source_file": "logo (1)(1).svg"
+    },
+    {
+      "slug": "unclassified-orbit-brand",
+      "name": "Unclassified Brand",
+      "source": "logo (2)(1).svg",
+      "bucket": "pending-classification",
+      "public": false,
+      "attribution": "Needs confirmation",
+      "color": "/assets/pending-classification/unclassified-orbit-brand.webp",
+      "gray": "/assets/pending-classification/unclassified-orbit-brand-gray.webp",
+      "white": "/assets/pending-classification/unclassified-orbit-brand-white.webp",
+      "source_file": "logo (2)(1).svg"
+    },
+    {
+      "slug": "international-clinics",
+      "name": "International Clinics",
+      "source": "logo(1).svg",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/international-clinics.webp",
+      "gray": "/assets/founder-experience/international-clinics-gray.webp",
+      "white": "/assets/founder-experience/international-clinics-white.webp",
+      "source_file": "logo(1).svg"
+    },
+    {
+      "slug": "riyadh-al-doha",
+      "name": "Riyadh Al Doha",
+      "source": "logo__2_-removebg-preview(1).png",
+      "bucket": "clients",
+      "public": true,
+      "attribution": "Wisal Tech project",
+      "color": "/assets/clients/riyadh-al-doha.webp",
+      "gray": "/assets/clients/riyadh-al-doha-gray.webp",
+      "white": "/assets/clients/riyadh-al-doha-white.webp",
+      "source_file": "logo__2_-removebg-preview(1).png"
+    },
+    {
+      "slug": "child-diapers",
+      "name": "Child Diapers",
+      "source": "logo-01-1(1).png",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/pending-classification/child-diapers.webp",
+      "gray": "/assets/pending-classification/child-diapers-gray.webp",
+      "white": "/assets/pending-classification/child-diapers-white.webp",
+      "source_file": "logo-01-1(1).png"
+    },
+    {
+      "slug": "livist-medical",
+      "name": "Livist Medical",
+      "source": "logo1(1).png",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/livist-medical.webp",
+      "gray": "/assets/founder-experience/livist-medical-gray.webp",
+      "white": "/assets/founder-experience/livist-medical-white.webp",
+      "source_file": "logo1(1).png"
+    },
+    {
+      "slug": "akarat-istanbul",
+      "name": "Akarat Istanbul",
+      "source": "logo-Cm21kihj(1).png",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/akarat-istanbul.webp",
+      "gray": "/assets/founder-experience/akarat-istanbul-gray.webp",
+      "white": "/assets/founder-experience/akarat-istanbul-white.webp",
+      "source_file": "logo-Cm21kihj(1).png"
+    },
+    {
+      "slug": "medical-heart-brand",
+      "name": "Medical Brand",
+      "source": "logo-mb-en(1).svg",
+      "bucket": "pending-classification",
+      "public": false,
+      "attribution": "Needs confirmation",
+      "color": "/assets/pending-classification/medical-heart-brand.webp",
+      "gray": "/assets/pending-classification/medical-heart-brand-gray.webp",
+      "white": "/assets/pending-classification/medical-heart-brand-white.webp",
+      "source_file": "logo-mb-en(1).svg"
+    },
+    {
+      "slug": "arkan-proje",
+      "name": "Arkan Proje",
+      "source": "nav-logo(1).png",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/arkan-proje.webp",
+      "gray": "/assets/founder-experience/arkan-proje-gray.webp",
+      "white": "/assets/founder-experience/arkan-proje-white.webp",
+      "source_file": "nav-logo(1).png"
+    },
+    {
+      "slug": "azhary-beauty-clinic",
+      "name": "Azhary Beauty Clinic",
+      "source": "new-logo-gold-H120.png-1(1).webp",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/azhary-beauty-clinic.webp",
+      "gray": "/assets/founder-experience/azhary-beauty-clinic-gray.webp",
+      "white": "/assets/founder-experience/azhary-beauty-clinic-white.webp",
+      "source_file": "new-logo-gold-H120.png-1(1).webp"
+    },
+    {
+      "slug": "turkey-luxury-clinics",
+      "name": "Turkey Luxury Clinics",
+      "source": "TLC logo (1)(1).svg",
+      "bucket": "founder-experience",
+      "public": true,
+      "attribution": "Selected prior founder/team experience",
+      "color": "/assets/founder-experience/turkey-luxury-clinics.webp",
+      "gray": "/assets/founder-experience/turkey-luxury-clinics-gray.webp",
+      "white": "/assets/founder-experience/turkey-luxury-clinics-white.webp",
+      "source_file": "TLC logo (1)(1).svg"
+    },
+    {
+      "slug": "track-group",
+      "name": "Track Group",
+      "source": "Track_logo_transparent(1).png",
+      "bucket": "clients",
+      "public": true,
+      "attribution": "Wisal Tech project",
+      "color": "/assets/clients/track-group.webp",
+      "gray": "/assets/clients/track-group-gray.webp",
+      "white": "/assets/clients/track-group-white.webp",
+      "source_file": "Track_logo_transparent(1).png"
+    },
+    {
+      "slug": "zeroday-academy",
+      "name": "ZeroDay Academy",
+      "source": "logoo.png",
+      "bucket": "clients",
+      "public": true,
+      "attribution": "Wisal Tech project",
+      "color": "/assets/clients/zeroday-academy.webp",
+      "gray": "/assets/clients/zeroday-academy-gray.webp",
+      "white": "/assets/clients/zeroday-academy-white.webp",
+      "source_file": "logoo.png"
+    }
+  ],
+  "excluded": [
+    "Hadith College",
+    "Naufar",
+    "Scalen Marketing",
+    "Governor Value / Governvalu"
+  ],
+  "notes": [
+    "Testimonials and platform reviews are fully designed but remain unpublished until verified client quotes or screenshots are supplied.",
+    "Do not imply direct Wisal Tech engagement for founder/team experience brands."
+  ]
+}
