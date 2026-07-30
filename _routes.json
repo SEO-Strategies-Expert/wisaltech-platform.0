@@ -2,13 +2,10 @@
   "version": 1,
   "include": [
     "/en",
-    "/en/*",
-    "/en/**"
+    "/en/*"
   ],
   "exclude": [
     "/static/*",
-    "/static/**",
-    "/images/*",
-    "/images/**"
+    "/images/*"
   ]
 }
