@@ -99,6 +99,10 @@
     .divider-glow{stroke:var(--mint);stroke-width:2;fill:none;stroke-dasharray:110 3000;opacity:.85;animation:dividerGlow 6s linear infinite}
     @keyframes dividerGlow{to{stroke-dashoffset:-3100}}
     .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.stat-card{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow-1)}.stat-card strong{font-family:"Manrope";font-size:clamp(2.2rem,4vw,4rem);color:var(--maroon);line-height:1}.stat-card span{display:block;margin-top:10px;color:var(--muted)}
+    /* WISAL STATS SECTION CSS START */
+    .stats-grid{grid-template-columns:repeat(4,1fr)}
+    @media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+    /* WISAL STATS SECTION CSS END */
     .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.problem-card{padding:28px;min-height:260px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;box-shadow:var(--shadow-1);transition:.3s var(--ease)}
     .problem-card-fragmentation{background-image:linear-gradient(180deg,rgba(13,27,61,.55) 0%,rgba(10,16,32,.75) 55%,rgba(10,16,32,.94) 100%),url(/images/wisal-home/problem-fragmentation.webp);background-size:cover;background-position:center}
     .problem-card-activity{background-image:linear-gradient(180deg,rgba(13,27,61,.55) 0%,rgba(10,16,32,.75) 55%,rgba(10,16,32,.94) 100%),url(/images/wisal-home/problem-activity.webp);background-size:cover;background-position:center}
@@ -432,13 +436,16 @@ html[lang="en"] .work-overlay p{line-height:1.55}
 <div aria-hidden="true" class="marquee marquee-2"><span>DOHA</span><span>QATAR</span><span>GROWTH SYSTEM</span><span>MEASUREMENT</span><span>MOTION</span><span>DESIGN</span><span>DOHA</span><span>QATAR</span><span>GROWTH SYSTEM</span><span>MEASUREMENT</span><span>MOTION</span><span>DESIGN</span></div>
 </div>
 <div aria-hidden="true" class="section-divider"><svg preserveaspectratio="none" viewbox="0 0 1600 80"><path class="divider-line" d="M0,40 L620,40 L660,15 L940,15 L980,40 L1600,40"></path><path class="divider-glow" d="M0,40 L620,40 L660,15 L940,15 L980,40 L1600,40"></path></svg></div>
+<!-- WISAL STATS SECTION START -->
 <section class="section-sm">
 <div class="container stats-grid" data-reveal="">
 <div class="stat-card"><strong class="count" data-count="10" data-suffix="+">0</strong><span>Years of practical experience</span></div>
 <div class="stat-card"><strong class="count" data-count="5">0</strong><span>Regional markets served</span></div>
 <div class="stat-card"><strong class="count" data-count="6">0</strong><span>Connected solution pillars</span></div>
+<div class="stat-card"><strong class="count" data-count="360" data-suffix="°">0</strong><span>From brand to measurable growth</span></div>
 </div>
 </section>
+<!-- WISAL STATS SECTION END -->
 <section class="section section-alt">
 <div class="container">
 <div class="section-head" data-reveal="">
