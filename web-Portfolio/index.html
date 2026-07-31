@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+<meta content="بورتفوليو وصال تك التفاعلي — تصميم وتطوير المواقع والمنصات الرقمية" name="description"/>
+<meta name="robots" content="noindex, nofollow, noarchive"/>
+<title>Wisal Tech — Interactive Portfolio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#03152c;--navy2:#071f3d;--green:#18d86a;--green2:#08a94f;--white:#f8fbff;--muted:#9fb1c6;--line:rgba(149,184,217,.20);--duration:680ms}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#020d1d;color:var(--white);font-family:'Alexandria',Tahoma,Arial,sans-serif}
+body{background:radial-gradient(circle at 20% 10%,rgba(19,105,163,.16),transparent 32%),radial-gradient(circle at 80% 90%,rgba(21,216,103,.08),transparent 34%),linear-gradient(145deg,#020b18,#04152c 54%,#02101f)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:linear-gradient(rgba(25,92,145,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(25,92,145,.12) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(90deg,#000,transparent 38%,transparent 62%,#000)}
+.app{width:100%;height:100%;display:grid;place-items:center;position:relative;direction:ltr}
+.book-shell{position:relative;width:min(96vw,calc(94vh * 16/9));aspect-ratio:16/9;perspective:2400px;filter:drop-shadow(0 28px 70px rgba(0,0,0,.48));touch-action:none;user-select:none}
+.book{position:absolute;inset:0;transform-style:preserve-3d}
+.page{position:absolute;inset:0;border-radius:24px;overflow:hidden;background:linear-gradient(140deg,#061a33,#020d1d);transform-origin:left center;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform;box-shadow:inset 0 0 0 1px rgba(163,202,236,.13);direction:ltr}
+.page:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:20;background:linear-gradient(90deg,rgba(255,255,255,.06),transparent 8%,transparent 91%,rgba(0,0,0,.24));opacity:.5}
+.page.dragging:after,.page.animating:after{content:"";position:absolute;inset:0;z-index:19;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.42),transparent 26%,transparent 70%,rgba(255,255,255,.09));mix-blend-mode:soft-light}
+.page.animating{transition:transform var(--duration) cubic-bezier(.2,.75,.15,1),filter var(--duration)}
+.page-grid{height:100%;display:grid;grid-template-columns:62% 38%;direction:ltr}
+.visual-side{padding:5.7% 2.4% 3.2% 4.3%;position:relative;display:flex;flex-direction:column;justify-content:center}
+.visual-side:before{content:"";position:absolute;left:1%;top:5%;width:42%;height:72%;border-left:1px solid rgba(20,140,221,.25);border-top:1px solid rgba(20,140,221,.18);transform:skewY(-13deg);pointer-events:none}
+.browser-card{position:relative;border-radius:22px;background:#0b203a;border:1px solid rgba(168,203,232,.28);box-shadow:0 26px 60px rgba(0,0,0,.48);overflow:hidden;z-index:2}
+.browser-bar{height:44px;display:flex;align-items:center;gap:14px;padding:0 16px;background:linear-gradient(#152a43,#0b1d34);border-bottom:1px solid rgba(180,210,236,.10);color:#d3dfeb;font-size:12px}
+.traffic{display:flex;gap:7px}.traffic i{width:11px;height:11px;border-radius:50%;display:block}.traffic i:nth-child(1){background:#ff625a}.traffic i:nth-child(2){background:#ffc14f}.traffic i:nth-child(3){background:#31c66b}.browser-url{background:rgba(2,9,19,.24);border-radius:10px;padding:7px 16px;margin:auto;min-width:46%;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.reload{font-size:18px}
+.shot-wrap{aspect-ratio:1.58/1;background:#eef3f6;overflow:hidden}.shot-wrap img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center}
+.slide-progress{display:flex;align-items:center;gap:12px;margin-top:22px;direction:ltr;color:#c4d0dc;z-index:3}.slide-progress strong{font-size:29px;color:var(--green);font-weight:500}.slide-progress span{font-size:16px}.mini-track{display:flex;gap:10px;margin-inline-start:22px;align-items:center}.mini-track b{width:8px;height:8px;border-radius:50%;background:#8290a3;display:block}.mini-track b.on{background:var(--green);box-shadow:0 0 0 5px rgba(24,216,106,.12)}
+.copy-side{padding:4.5% 5.5% 3.4% 3.4%;position:relative;text-align:right;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(90deg,rgba(4,20,39,.35),rgba(4,20,39,.87));border-left:1px solid rgba(92,155,202,.14)}
+.copy-side:after{content:"";position:absolute;right:-16%;bottom:-23%;width:72%;aspect-ratio:1;border:1px solid rgba(24,216,106,.12);transform:rotate(45deg);pointer-events:none}
+.brand-logo{position:absolute;top:4.3%;right:5.4%;width:43%;max-height:78px;object-fit:contain;object-position:right center}
+.eyebrow{margin:42px 0 4px;color:var(--green);font-size:clamp(12px,1.1vw,20px);font-weight:500}.accent-line{display:block;width:32px;height:3px;background:var(--project-accent,var(--green));border-radius:99px;margin:10px 0 16px auto}
+.copy-side h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(36px,4.15vw,72px);line-height:1.02;margin:0 0 16px;color:#fff;direction:ltr;text-align:right;letter-spacing:-1px}
+.meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 18px;color:#c9d6e4;font-size:clamp(11px,.92vw,16px)}.meta b{color:#f4f7fb;font-weight:400}.meta span{border-right:1px solid rgba(255,255,255,.25);padding-right:14px}.meta em{font-style:normal;color:var(--project-accent,var(--green));font-weight:700}
+.description{color:#c6d3df;font-size:clamp(12px,1.05vw,17px);line-height:1.85;margin:0 0 20px;max-width:95%}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;position:relative;z-index:2}.feature{min-height:78px;border:1px solid rgba(130,181,219,.23);background:linear-gradient(145deg,rgba(12,42,72,.73),rgba(5,24,45,.72));border-radius:14px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;color:#edf5fc;font-size:clamp(10px,.8vw,14px);box-shadow:inset 0 1px rgba(255,255,255,.04)}.feature-icon{color:var(--project-accent,var(--green));font-size:24px;line-height:1}
+.visit-link{display:inline-flex;align-items:center;justify-content:center;align-self:flex-end;gap:10px;margin-top:18px;color:#071426;background:var(--project-accent,var(--green));padding:11px 19px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:700;position:relative;z-index:4;transition:.25s}.visit-link:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.cover-page{background:radial-gradient(circle at 16% 25%,rgba(20,116,178,.25),transparent 38%),linear-gradient(135deg,#031128,#061e3a 56%,#021020)}.cover-grid{height:100%;display:grid;grid-template-columns:58% 42%;direction:ltr}
+.cover-visual{position:relative;padding:8% 2% 6% 5%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:17px;transform:rotate(-2deg)}.cover-thumb{overflow:hidden;border-radius:19px;border:1px solid rgba(160,200,232,.25);box-shadow:0 24px 50px rgba(0,0,0,.42);position:relative;background:#09203b}.cover-thumb:first-child{grid-row:1/3}.cover-thumb img{width:100%;height:100%;object-fit:cover;object-position:top}.cover-thumb span{position:absolute;left:14px;bottom:12px;padding:7px 11px;background:rgba(1,12,26,.75);backdrop-filter:blur(8px);border-radius:8px;font-size:11px;direction:ltr}
+.orb{position:absolute;border-radius:50%;filter:blur(3px);background:radial-gradient(circle at 30% 30%,rgba(33,236,121,.55),rgba(4,72,50,.04) 64%);pointer-events:none}.orb.one{width:190px;height:190px;left:-50px;bottom:0}.orb.two{width:120px;height:120px;right:-25px;top:12%}
+.cover-copy{padding:7% 7% 5%;display:flex;flex-direction:column;justify-content:center;text-align:right;position:relative;background:linear-gradient(90deg,rgba(3,17,40,.4),rgba(2,12,28,.92))}.cover-logo{width:55%;margin:0 0 5% auto;max-height:90px;object-fit:contain;object-position:right}.cover-copy .eyebrow{margin:0 0 13px;letter-spacing:2px;font-size:12px}.cover-copy h1{font-size:clamp(38px,4.8vw,76px);line-height:1.13;margin:0 0 20px;font-weight:700}.cover-copy h1 span{color:var(--green)}.cover-copy>p:not(.eyebrow){color:#b9c9d9;line-height:1.9;font-size:clamp(12px,1.05vw,17px);margin:0 0 22px}.cover-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}.cover-stats div{border:1px solid rgba(134,180,215,.18);background:rgba(7,37,66,.58);padding:13px 10px;border-radius:13px;text-align:center}.cover-stats b{display:block;color:var(--green);font-size:25px}.cover-stats span{font-size:11px;color:#c5d3df}.start-btn{align-self:flex-end;border:0;background:var(--green);color:#021321;border-radius:999px;padding:13px 22px;font-family:inherit;font-weight:700;cursor:pointer;font-size:14px}.cover-copy small{color:#7f94a9;margin-top:14px;font-size:10px}
+.end-page{background:radial-gradient(circle at 18% 50%,rgba(21,196,97,.17),transparent 33%),linear-gradient(135deg,#021020,#06213d)}.end-grid{height:100%;display:grid;grid-template-columns:48% 52%;direction:rtl}.end-copy{padding:7%;display:flex;flex-direction:column;justify-content:center;text-align:right}.end-logo{width:48%;max-height:90px;object-fit:contain;object-position:right;margin-bottom:25px}.end-copy .eyebrow{margin:0 0 12px}.end-copy h2{font-size:clamp(34px,4.1vw,68px);line-height:1.28;margin:0 0 20px}.end-copy>p:not(.eyebrow){color:#b9c8d8;line-height:1.9;font-size:clamp(12px,1vw,17px);max-width:90%}.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.end-actions a{text-decoration:none;border-radius:999px;padding:13px 21px;font-weight:700;font-size:13px}.primary-action{background:var(--green);color:#06162a}.secondary-action{border:1px solid rgba(255,255,255,.24);color:#fff;background:rgba(255,255,255,.04)}.contact-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;color:#96aabd;font-size:12px;direction:ltr;justify-content:flex-end}
+.end-art{display:grid;place-items:center;position:relative;direction:ltr}.end-window{width:76%;aspect-ratio:1.35;background:linear-gradient(145deg,#0d2a48,#041225);border:1px solid rgba(157,198,229,.24);border-radius:25px;box-shadow:0 32px 70px rgba(0,0,0,.5);transform:rotate(-3deg)}.end-window-top{height:46px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:8px;align-items:center;padding:0 18px}.end-window-top i{width:11px;height:11px;border-radius:50%;background:#18d86a}.end-window-top i:nth-child(2){background:#f8b84a}.end-window-top i:nth-child(3){background:#ff625a}.end-window-body{height:calc(100% - 46px);display:grid;place-items:center;align-content:center;gap:6px;font-size:clamp(25px,3.5vw,60px);font-weight:800;letter-spacing:7px;color:#eaf6ff}.end-window-body span:nth-child(2){color:var(--green)}.end-badge{position:absolute;right:4%;bottom:10%;width:120px;height:120px;border-radius:50%;display:grid;place-items:center;text-align:center;background:var(--green);color:#021225;font-size:40px;font-weight:800;box-shadow:0 18px 35px rgba(0,0,0,.35)}.end-badge small{display:block;font-size:9px;letter-spacing:1px;margin-top:-26px}
+.nav-ui{position:fixed;z-index:500;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:rgba(2,12,26,.76);border:1px solid rgba(154,193,223,.16);backdrop-filter:blur(16px);padding:9px 13px;border-radius:999px;direction:ltr;box-shadow:0 10px 30px rgba(0,0,0,.25)}.nav-ui button{width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.07);color:#fff;cursor:pointer;font-size:18px}.nav-ui button:hover{background:var(--green);color:#031226}.page-count{min-width:66px;text-align:center;color:#c0cfdd;font-size:12px}.dots{display:flex;gap:6px}.dots button{width:7px;height:7px;padding:0;background:#68798b}.dots button.active{background:var(--green);box-shadow:0 0 0 4px rgba(24,216,106,.12)}
+.drag-hint{position:fixed;left:18px;top:18px;z-index:400;color:#8ea4b8;font-size:11px;background:rgba(2,12,26,.54);padding:9px 12px;border-radius:999px;border:1px solid rgba(154,193,223,.12);direction:rtl}
+.edge{position:fixed;top:0;bottom:0;width:7vw;z-index:450;cursor:pointer}.edge-next{left:0}.edge-prev{right:0}
+@media(max-width:900px){.book-shell{width:98vw}.copy-side{padding-right:4%}.brand-logo{width:48%}.description{line-height:1.55}.feature{min-height:63px}.visit-link{margin-top:10px;padding:8px 14px}.browser-bar{height:32px}.drag-hint{display:none}.nav-ui{bottom:8px;transform:translateX(-50%) scale(.88)}}
+@media(max-aspect-ratio:1/1){.book-shell{width:96vw;aspect-ratio:9/15}.page-grid,.cover-grid,.end-grid{grid-template-columns:1fr;grid-template-rows:47% 53%}.visual-side{padding:7% 7% 2%;order:1}.copy-side{order:2;padding:3% 7% 8%;border-left:0;border-top:1px solid rgba(92,155,202,.14)}.brand-logo{top:4%;right:7%;width:35%;max-height:52px}.copy-side .eyebrow{margin:24px 0 0}.copy-side h2{font-size:clamp(28px,8vw,48px);margin-bottom:8px}.description{font-size:11px;margin-bottom:10px}.features{gap:7px}.feature{min-height:55px;font-size:9px;padding:6px}.feature-icon{font-size:18px}.visit-link{display:none}.slide-progress{display:none}.browser-card{border-radius:15px}.cover-visual{order:1;padding:5% 8%}.cover-copy{order:2;padding:4% 8% 10%}.cover-logo{width:42%;max-height:58px;margin-bottom:3%}.cover-copy h1{font-size:clamp(30px,9vw,51px)}.cover-stats{margin-bottom:10px}.end-art{order:1}.end-copy{order:2;padding:5% 8% 11%}.end-logo{width:35%;max-height:55px;margin-bottom:10px}.end-copy h2{font-size:clamp(28px,8vw,46px)}.end-window{width:65%}}
+@media(prefers-reduced-motion:reduce){.page.animating{transition-duration:1ms}}
+
+/* High-quality external preview assets */
+.browser-card{background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important;border-radius:0!important}
+.browser-bar{display:none!important}
+.shot-wrap{aspect-ratio:885/720!important;background:transparent!important;overflow:visible!important}
+.shot-wrap img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;image-rendering:auto!important;filter:none!important;transform:translateZ(0)}
+.cover-thumb img{object-fit:cover!important;object-position:center!important;filter:none!important}
+@media(max-width:760px){
+  .shot-wrap{aspect-ratio:885/720!important}
+  .visual-side{padding:2.5% 3%!important}
+}
+</style>
+<meta content="#03152c" name="theme-color"/></head>
+<body>
+<div class="app"><main aria-label="بورتفوليو وصال تك التفاعلي" class="book-shell" id="bookShell"><div class="book" id="book">
+<article class="page cover-page" data-page-title="الغلاف">
+<div class="cover-grid">
+<section class="cover-visual"><div class="cover-thumb"><img alt="Riyadh Al Doha Farm" loading="eager" src="assets/01-riyadh-al-doha-farm.png"/><span>Riyadh Al Doha Farm</span></div><div class="cover-thumb"><img alt="Livist Medical" loading="eager" src="assets/03-livist-medical.png"/><span>Livist Medical</span></div><div class="cover-thumb"><img alt="Zeroday Academy" loading="eager" src="assets/10-zeroday-academy.png"/><span>Zeroday Academy</span></div><div class="orb one"></div><div class="orb two"></div></section>
+<section class="cover-copy" dir="rtl">
+<img alt="وصال تك" class="cover-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">WISAL TECH — SELECTED WORK</p>
+<h1>مواقع صنعت<br/><span>حضورًا رقميًا أقوى</span></h1>
+<p>مجموعة مختارة من مشاريع المواقع والمنصات وصفحات الهبوط في قطاعات متعددة، مقدمة داخل تجربة تفاعلية قابلة للتقليب.</p>
+<div class="cover-stats"><div><b>10</b><span>مشروعات</span></div><div><b>6</b><span>قطاعات</span></div><div><b>3</b><span>دول</span></div></div>
+<button class="start-btn" data-next="">ابدأ استعراض الأعمال <span>←</span></button>
+<small>اسحب بالماوس أو اللمس إلى اليسار لقلب الصفحة</small>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Riyadh Al Doha Farm" style="--project-accent:#d9ad51">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 riyadhdoha.com</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Riyadh Al Doha Farm" decoding="async" loading="eager" src="assets/01-riyadh-al-doha-farm.png"/></div>
+</div>
+<div class="slide-progress"><strong>01</strong><span>/ 10</span><div class="mini-track"><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Riyadh Al Doha Farm</h2>
+<p class="meta"><b>موقع علامة غذائية ومنتجات</b><span>صفحة <em>01</em> من 10</span></p>
+<p class="description">واجهة براند فاخرة لمنتج غذائي قطري، تجمع بين الهوية الهادئة، القصة البصرية، وعرض المنتجات بصورة راقية وواضحة.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>هوية تحريرية</span></div><div class="feature"><span class="feature-icon">◈</span><span>قصة العلامة</span></div><div class="feature"><span class="feature-icon">⌁</span><span>كتالوج المنتجات</span></div><div class="feature"><span class="feature-icon">◎</span><span>شارات الثقة</span></div><div class="feature"><span class="feature-icon">◇</span><span>قسم زمني</span></div><div class="feature"><span class="feature-icon">↗</span><span>دعوة إجراء</span></div></div>
+<a class="visit-link interactive-link" href="https://riyadhdoha.com/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="International Clinics" style="--project-accent:#16c9aa">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 internationalclinics.com/en</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع International Clinics" decoding="async" loading="eager" src="assets/02-international-clinics.png"/></div>
+</div>
+<div class="slide-progress"><strong>02</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>International Clinics</h2>
+<p class="meta"><b>منصة علاج وسياحة طبية</b><span>صفحة <em>02</em> من 10</span></p>
+<p class="description">منصة طبية دولية تجمع بين الثقة وسهولة التصفح، وتنظم رحلة العلاج في تركيا من البحث إلى اختيار التخصص والطبيب.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>بحث طبي</span></div><div class="feature"><span class="feature-icon">◈</span><span>الأقسام الطبية</span></div><div class="feature"><span class="feature-icon">⌁</span><span>آلية العمل</span></div><div class="feature"><span class="feature-icon">◎</span><span>الأطباء</span></div><div class="feature"><span class="feature-icon">◇</span><span>المستشفيات</span></div><div class="feature"><span class="feature-icon">↗</span><span>المقالات</span></div></div>
+<a class="visit-link interactive-link" href="https://internationalclinics.com/en/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Livist Medical" style="--project-accent:#26d07c">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 livistmedical.com</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Livist Medical" decoding="async" loading="eager" src="assets/03-livist-medical.png"/></div>
+</div>
+<div class="slide-progress"><strong>03</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Livist Medical</h2>
+<p class="meta"><b>منصة سياحة طبية</b><span>صفحة <em>03</em> من 10</span></p>
+<p class="description">واجهة تسويق طبي حديثة تبرز الخدمات العلاجية والموثوقية الدولية، مع رحلة مستخدم منظمة للمرضى القادمين من الخارج.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>Hero تسويقي</span></div><div class="feature"><span class="feature-icon">◈</span><span>الخدمات</span></div><div class="feature"><span class="feature-icon">⌁</span><span>رحلة المريض</span></div><div class="feature"><span class="feature-icon">◎</span><span>الأطباء</span></div><div class="feature"><span class="feature-icon">◇</span><span>الشهادات</span></div><div class="feature"><span class="feature-icon">↗</span><span>المراكز الطبية</span></div></div>
+<a class="visit-link interactive-link" href="https://livistmedical.com/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Track Group" style="--project-accent:#49dc62">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 mytrackgroup.com/lp</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Track Group" decoding="async" loading="eager" src="assets/04-track-group.png"/></div>
+</div>
+<div class="slide-progress"><strong>04</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class=""></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Track Group</h2>
+<p class="meta"><b>لاندنج بيج للدراسة بالخارج</b><span>صفحة <em>04</em> من 10</span></p>
+<p class="description">صفحة هبوط موجهة للتحويل، تبرز الجامعات وخطوات رحلة الدراسة في ماليزيا، وتدفع الزائر إلى طلب الاستشارة بوضوح.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>Hero جذاب</span></div><div class="feature"><span class="feature-icon">◈</span><span>نموذج تسجيل</span></div><div class="feature"><span class="feature-icon">⌁</span><span>الجامعات</span></div><div class="feature"><span class="feature-icon">◎</span><span>خطوات الرحلة</span></div><div class="feature"><span class="feature-icon">◇</span><span>فيديوهات الطلاب</span></div><div class="feature"><span class="feature-icon">↗</span><span>دعوات إجراء</span></div></div>
+<a class="visit-link interactive-link" href="https://mytrackgroup.com/lp/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Wisal Tech" style="--project-accent:#16d85f">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 wisaltech.agency</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Wisal Tech" decoding="async" loading="eager" src="assets/05-wisal-tech.png"/></div>
+</div>
+<div class="slide-progress"><strong>05</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Wisal Tech</h2>
+<p class="meta"><b>موقع وكالة رقمية</b><span>صفحة <em>05</em> من 10</span></p>
+<p class="description">موقع وكالة تقنية يعكس هوية وصال تك من خلال عرض الخدمات ومراحل العمل وحلول النمو داخل تجربة بصرية احترافية وواثقة.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>Hero تقني</span></div><div class="feature"><span class="feature-icon">◈</span><span>الخدمات</span></div><div class="feature"><span class="feature-icon">⌁</span><span>مراحل العمل</span></div><div class="feature"><span class="feature-icon">◎</span><span>حلول متكاملة</span></div><div class="feature"><span class="feature-icon">◇</span><span>هوية قوية</span></div><div class="feature"><span class="feature-icon">↗</span><span>دعوة إجراء</span></div></div>
+<a class="visit-link interactive-link" href="https://wisaltech.agency/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Akarat Istanbul" style="--project-accent:#d33a5c">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 akaratistanbul.net</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Akarat Istanbul" decoding="async" loading="eager" src="assets/06-akarat-istanbul.png"/></div>
+</div>
+<div class="slide-progress"><strong>06</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Akarat Istanbul</h2>
+<p class="meta"><b>بوابة عقارية</b><span>صفحة <em>06</em> من 10</span></p>
+<p class="description">منصة عقارية عربية تركز على البحث السلس، عرض الفرص وإبراز العقارات والخدمات بصورة واضحة ومنظمة.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>بحث متقدم</span></div><div class="feature"><span class="feature-icon">◈</span><span>العقارات</span></div><div class="feature"><span class="feature-icon">⌁</span><span>إحصائيات</span></div><div class="feature"><span class="feature-icon">◎</span><span>الخدمات</span></div><div class="feature"><span class="feature-icon">◇</span><span>المدونة</span></div><div class="feature"><span class="feature-icon">↗</span><span>دعوة إجراء</span></div></div>
+<a class="visit-link interactive-link" href="https://akaratistanbul.net/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Imtilak" style="--project-accent:#b8284a">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 www.imtilak.net/ar</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Imtilak" decoding="async" loading="eager" src="assets/07-imtilak.png"/></div>
+</div>
+<div class="slide-progress"><strong>07</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class="on"></b><b class=""></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Imtilak</h2>
+<p class="meta"><b>منصة عقارية متكاملة</b><span>صفحة <em>07</em> من 10</span></p>
+<p class="description">واجهة عقارية كبيرة تبرز قوة البحث وتنوع المشاريع والوحدات، وتقدم تجربة استخدام منظمة للعميل الباحث عن الاستثمار.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>Hero عقاري</span></div><div class="feature"><span class="feature-icon">◈</span><span>بحث متقدم</span></div><div class="feature"><span class="feature-icon">⌁</span><span>العقارات</span></div><div class="feature"><span class="feature-icon">◎</span><span>الوحدات</span></div><div class="feature"><span class="feature-icon">◇</span><span>الخدمات</span></div><div class="feature"><span class="feature-icon">↗</span><span>المقالات</span></div></div>
+<a class="visit-link interactive-link" href="https://www.imtilak.net/ar" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Batal Eye Center" style="--project-accent:#48a8e8">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 bataleyecenter.com</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Batal Eye Center" decoding="async" loading="eager" src="assets/08-batal-eye-center.png"/></div>
+</div>
+<div class="slide-progress"><strong>08</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class="on"></b><b class=""></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Batal Eye Center</h2>
+<p class="meta"><b>موقع مركز طبي متخصص</b><span>صفحة <em>08</em> من 10</span></p>
+<p class="description">موقع طبي متخصص يعرض خدمات العيون والأطباء والحجز، مع تجربة منظمة تساعد الزائر على الوصول للمعلومة واتخاذ الإجراء بسهولة.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>Hero طبي</span></div><div class="feature"><span class="feature-icon">◈</span><span>الحجز</span></div><div class="feature"><span class="feature-icon">⌁</span><span>الخدمات</span></div><div class="feature"><span class="feature-icon">◎</span><span>الأطباء</span></div><div class="feature"><span class="feature-icon">◇</span><span>المعرض</span></div><div class="feature"><span class="feature-icon">↗</span><span>الخريطة</span></div></div>
+<a class="visit-link interactive-link" href="https://bataleyecenter.com/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Dr. Ashary" style="--project-accent:#d8a42f">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 drashary.com</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Dr. Ashary" decoding="async" loading="eager" src="assets/09-dr-ashary.png"/></div>
+</div>
+<div class="slide-progress"><strong>09</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class="on"></b><b class=""></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Dr. Ashary</h2>
+<p class="meta"><b>موقع عيادة تجميل وأسنان</b><span>صفحة <em>09</em> من 10</span></p>
+<p class="description">واجهة طبية أنيقة تبرز خبرة الطبيب والخدمات العلاجية والتعريف بالفريق ضمن أسلوب بصري واضح وفاخر.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>Hero شخصي</span></div><div class="feature"><span class="feature-icon">◈</span><span>نبذة الطبيب</span></div><div class="feature"><span class="feature-icon">⌁</span><span>الخدمات</span></div><div class="feature"><span class="feature-icon">◎</span><span>الإحصائيات</span></div><div class="feature"><span class="feature-icon">◇</span><span>الفريق</span></div><div class="feature"><span class="feature-icon">↗</span><span>الحجز</span></div></div>
+<a class="visit-link interactive-link" href="https://drashary.com/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page project-page" data-page-title="Zeroday Academy" style="--project-accent:#ff174e">
+<div class="page-grid">
+<section class="visual-side">
+<div class="browser-card">
+<div class="browser-bar"><span class="traffic"><i></i><i></i><i></i></span><span class="browser-url">🔒 zeroday.academy</span><span class="reload">↻</span></div>
+<div class="shot-wrap"><img alt="لقطة فعلية من موقع Zeroday Academy" decoding="async" loading="eager" src="assets/10-zeroday-academy.png"/></div>
+</div>
+<div class="slide-progress"><strong>10</strong><span>/ 10</span><div class="mini-track"><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class=""></b><b class="on"></b></div></div>
+</section>
+<section class="copy-side" dir="rtl">
+<img alt="وصال تك" class="brand-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">بورتفوليو وصال تك</p>
+<span class="accent-line"></span>
+<h2>Zeroday Academy</h2>
+<p class="meta"><b>لاندنج بيج للأمن السيبراني</b><span>صفحة <em>10</em> من 10</span></p>
+<p class="description">صفحة هبوط تقنية قوية تسوّق برنامجًا تدريبيًا في الأمن السيبراني عبر عرض القيمة والمحتوى والمدرب والشهادات بوضوح.</p>
+<div class="features"><div class="feature"><span class="feature-icon">◫</span><span>Hero تقني</span></div><div class="feature"><span class="feature-icon">◈</span><span>نموذج تسجيل</span></div><div class="feature"><span class="feature-icon">⌁</span><span>محتوى التدريب</span></div><div class="feature"><span class="feature-icon">◎</span><span>المدرب</span></div><div class="feature"><span class="feature-icon">◇</span><span>الشهادات</span></div><div class="feature"><span class="feature-icon">↗</span><span>دعوات إجراء</span></div></div>
+<a class="visit-link interactive-link" href="https://zeroday.academy/" rel="noopener" target="_blank">زيارة الموقع <span>↗</span></a>
+</section>
+</div>
+</article>
+<article class="page end-page" data-page-title="تواصل معنا">
+<div class="end-grid" dir="rtl">
+<section class="end-copy">
+<img alt="وصال تك" class="end-logo" src="assets/wisal-tech-logo.png"/>
+<p class="eyebrow">جاهز لبناء مشروعك؟</p>
+<h2>لنحوّل فكرتك إلى تجربة رقمية تستحق الثقة.</h2>
+<p>تصميم وتطوير مواقع ومتاجر ومنصات رقمية بهوية قوية، تجربة مستخدم واضحة، وأساس تقني قابل للنمو.</p>
+<div class="end-actions">
+<a class="primary-action interactive-link" href="https://wa.me/97433803318" rel="noopener" target="_blank">تواصل عبر واتساب</a>
+<a class="secondary-action interactive-link" href="https://wisaltech.agency/" rel="noopener" target="_blank">زيارة موقع وصال تك</a>
+</div>
+<div class="contact-row"><span>+97433803318</span><span>wisaltech.agency</span><span>@wisaltech.qa</span></div>
+</section>
+<section class="end-art">
+<div class="end-window"><div class="end-window-top"><i></i><i></i><i></i></div><div class="end-window-body"><span>DESIGN</span><span>DEVELOP</span><span>GROW</span></div></div>
+<div class="end-badge">10<br/><small>CASE STUDIES</small></div>
+</section>
+</div>
+</article></div></main></div>
+<div aria-label="الصفحة التالية" class="edge edge-next"></div><div aria-label="الصفحة السابقة" class="edge edge-prev"></div>
+<div class="drag-hint">اسحب الصفحة بالماوس أو اللمس</div>
+<nav aria-label="التنقل بين الصفحات" class="nav-ui"><button aria-label="السابق" id="prevBtn">›</button><div class="dots" id="dots"></div><span class="page-count" id="pageCount"></span><button aria-label="التالي" id="nextBtn">‹</button></nav>
+<script>
+(()=>{
+ const book=document.getElementById('book'), shell=document.getElementById('bookShell');
+ const pages=[...book.querySelectorAll('.page')], count=pages.length; let current=0,drag=null,animating=false,wheelLock=false;
+ const dotsEl=document.getElementById('dots'), countEl=document.getElementById('pageCount');
+ pages.forEach((p,i)=>{p.dataset.index=i; p.style.zIndex=count-i;});
+ pages.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','الانتقال إلى الصفحة '+(i+1));b.addEventListener('click',()=>goTo(i));dotsEl.appendChild(b);});
+ function updateUI(){countEl.textContent=String(current+1).padStart(2,'0')+' / '+String(count).padStart(2,'0');[...dotsEl.children].forEach((d,i)=>d.classList.toggle('active',i===current));document.title=(pages[current].dataset.pageTitle||'Wisal Tech')+' — Wisal Tech Portfolio';}
+ function stack(){pages.forEach((p,i)=>{p.classList.remove('dragging');p.style.transition='';if(i<current){p.style.transform='rotateY(-180deg)';p.style.zIndex=i+1;}else{p.style.transform='rotateY(0deg)';p.style.zIndex=count-i;}});updateUI();}
+ function animatePage(page,angle,done){animating=true;page.classList.remove('dragging');page.classList.add('animating');page.style.zIndex=count+3;requestAnimationFrame(()=>page.style.transform=`rotateY(${angle}deg)`);setTimeout(()=>{page.classList.remove('animating');done();animating=false;stack();},700);}
+ function next(){if(animating||current>=count-1)return;const p=pages[current];animatePage(p,-180,()=>current++);}
+ function prev(){if(animating||current<=0)return;const p=pages[current-1];p.style.transform='rotateY(-180deg)';animatePage(p,0,()=>current--);}
+ function goTo(i){if(animating||i===current)return;if(i>current){const step=()=>{if(current<i){next();setTimeout(step,735)}};step();}else{const step=()=>{if(current>i){prev();setTimeout(step,735)}};step();}}
+ function localX(e){const r=shell.getBoundingClientRect();return (e.clientX-r.left)/r.width;}
+ shell.addEventListener('pointerdown',e=>{if(animating||e.button>0||e.target.closest('a,button'))return;const x=localX(e);shell.setPointerCapture(e.pointerId);drag={id:e.pointerId,startX:e.clientX,lastX:e.clientX,startT:performance.now(),mode:null,page:null};});
+ shell.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const rect=shell.getBoundingClientRect(),dx=e.clientX-drag.startX;if(!drag.mode&&Math.abs(dx)>8){if(dx<0&&current<count-1){drag.mode='next';drag.page=pages[current]}else if(dx>0&&current>0){drag.mode='prev';drag.page=pages[current-1]}else return;drag.page.classList.add('dragging');drag.page.style.transition='none';drag.page.style.zIndex=count+4;}if(!drag.mode)return;let angle;if(drag.mode==='next')angle=Math.max(-180,Math.min(0,dx/rect.width*220));else angle=Math.max(-180,Math.min(0,-180+dx/rect.width*220));drag.page.style.transform=`rotateY(${angle}deg)`;drag.angle=angle;drag.lastX=e.clientX;});
+ function endDrag(e){if(!drag||e.pointerId!==drag.id)return;const d=drag;drag=null;if(!d.mode)return;const velocity=(e.clientX-d.startX)/(performance.now()-d.startT);if(d.mode==='next'){if((d.angle||0)<-48||velocity<-.45)animatePage(d.page,-180,()=>current++);else animatePage(d.page,0,()=>{})}else{if((d.angle||-180)>-132||velocity>.45)animatePage(d.page,0,()=>current--);else animatePage(d.page,-180,()=>{})}}
+ shell.addEventListener('pointerup',endDrag);shell.addEventListener('pointercancel',endDrag);
+ document.getElementById('nextBtn').addEventListener('click',next);document.getElementById('prevBtn').addEventListener('click',prev);document.querySelector('.edge-next').addEventListener('click',next);document.querySelector('.edge-prev').addEventListener('click',prev);document.querySelector('[data-next]').addEventListener('click',next);
+ document.addEventListener('keydown',e=>{if(['ArrowLeft','PageDown',' '].includes(e.key)){e.preventDefault();next()}if(['ArrowRight','PageUp'].includes(e.key)){e.preventDefault();prev()}if(e.key==='Home')goTo(0);if(e.key==='End')goTo(count-1);});
+ window.addEventListener('wheel',e=>{if(wheelLock||Math.abs(e.deltaY)<15)return;wheelLock=true;e.deltaY>0?next():prev();setTimeout(()=>wheelLock=false,850);},{passive:true});
+ document.querySelectorAll('.interactive-link').forEach(a=>{a.addEventListener('pointerdown',e=>e.stopPropagation());});
+ stack();
+})();
+</script>
+</body></html>
