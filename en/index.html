@@ -109,6 +109,19 @@
     .stat-flags svg{width:27px;height:18px;border-radius:4px;box-shadow:0 0 0 1px var(--line);display:block}
     @media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
     /* WISAL STATS SECTION CSS END */
+    /* WISAL TRUST SECTION CSS START */
+    .trust-label{font-size:.85rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin:36px 0 14px;display:flex;align-items:center;gap:12px}
+    .trust-label::after{content:"";flex:1;height:1px;background:var(--line)}
+    .logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+    .logo-tile{position:relative;display:flex;align-items:center;justify-content:center;height:96px;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);transition:border-color .3s,transform .3s,box-shadow .3s}
+    .logo-tile:hover{border-color:rgba(22,163,74,.45);transform:translateY(-3px);box-shadow:var(--shadow-1)}
+    .logo-mono{max-width:100%;max-height:100%;object-fit:contain;opacity:.72;transition:opacity .35s}
+    .logo-mono.filter-white{filter:brightness(0) invert(1)}
+    .logo-color{position:absolute;inset:0;padding:20px;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .35s}
+    .logo-tile:hover .logo-mono{opacity:0}
+    .logo-tile:hover .logo-color{opacity:1}
+    .trust-note{margin-top:18px;color:var(--muted);font-size:.85rem;max-width:640px}
+    /* WISAL TRUST SECTION CSS END */
     .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.problem-card{padding:28px;min-height:260px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;box-shadow:var(--shadow-1);transition:.3s var(--ease)}
     .problem-card-fragmentation{background-image:linear-gradient(180deg,rgba(13,27,61,.55) 0%,rgba(10,16,32,.75) 55%,rgba(10,16,32,.94) 100%),url(/images/wisal-home/problem-fragmentation.webp);background-size:cover;background-position:center}
     .problem-card-activity{background-image:linear-gradient(180deg,rgba(13,27,61,.55) 0%,rgba(10,16,32,.75) 55%,rgba(10,16,32,.94) 100%),url(/images/wisal-home/problem-activity.webp);background-size:cover;background-position:center}
@@ -472,6 +485,43 @@ html[lang="en"] .work-overlay p{line-height:1.55}
 </div>
 </section>
 <!-- WISAL STATS SECTION END -->
+<!-- WISAL TRUST SECTION START -->
+<section class="section-sm">
+<div class="container">
+<div class="section-head" data-reveal="">
+<div><span class="kicker latin">TRUSTED BY</span><h2>Trusted by <span class="section-title-accent">Real Brands</span>.</h2></div>
+<p>Projects delivered directly by Wisal Tech, plus prior founder and team experience across education, healthcare, real estate, technology and retail.</p>
+</div>
+<div data-reveal="">
+<h3 class="trust-label">Wisal Tech Projects</h3>
+<div class="logo-grid">
+<div class="logo-tile" role="img" aria-label="ZeroDay Academy"><img class="logo-mono" src="/assets/clients/zeroday-academy-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/clients/zeroday-academy.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Track Group"><img class="logo-mono" src="/assets/clients/track-group-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/clients/track-group.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Riyadh Al Doha"><img class="logo-mono" src="/assets/clients/riyadh-al-doha-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/clients/riyadh-al-doha.webp" alt="" loading="lazy" decoding="async"></div>
+</div>
+</div>
+<div data-reveal="">
+<h3 class="trust-label">Founder &amp; Team Experience</h3>
+<div class="logo-grid">
+<div class="logo-tile" role="img" aria-label="Livist Group"><img class="logo-mono" src="/assets/founder-experience/livist-group-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/livist-group.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Livist Medical"><img class="logo-mono" src="/assets/founder-experience/livist-medical-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/livist-medical.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Akarat Istanbul"><img class="logo-mono" src="/assets/founder-experience/akarat-istanbul-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/akarat-istanbul.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Fiper"><img class="logo-mono" src="/assets/founder-experience/fiper-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/fiper.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Imtilak Turkey"><img class="logo-mono" src="/assets/founder-experience/imtilak-turkey-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/imtilak-turkey.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Arkan Proje"><img class="logo-mono" src="/assets/founder-experience/arkan-proje-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/arkan-proje.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Turkey Luxury Clinics"><img class="logo-mono" src="/assets/founder-experience/turkey-luxury-clinics-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/turkey-luxury-clinics.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="International Clinics"><img class="logo-mono" src="/assets/founder-experience/international-clinics-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/international-clinics.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Ashary Beauty Clinic"><img class="logo-mono" src="/assets/founder-experience/azhary-beauty-clinic-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/azhary-beauty-clinic.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Itqan Education"><img class="logo-mono" src="/assets/founder-experience/itqan-education-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/itqan-education.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Batal Optics"><img class="logo-mono" src="/assets/founder-experience/batal-optics-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/batal-optics.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Child Diapers"><img class="logo-mono" src="/assets/founder-experience/child-diapers-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/child-diapers.webp" alt="" loading="lazy" decoding="async"></div>
+<div class="logo-tile" role="img" aria-label="Sanad Center"><img class="logo-mono filter-white" src="/assets/founder-experience/sanad-center.png" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/sanad-center.png" alt="" loading="lazy" decoding="async"></div>
+</div>
+</div>
+<p class="trust-note">The list above includes prior founder and team experience gained before Wisal Tech was founded. It reflects hands-on expertise and does not imply all brands are direct Wisal Tech clients.</p>
+</div>
+</section>
+<!-- WISAL TRUST SECTION END -->
 <section class="section section-alt">
 <div class="container">
 <div class="section-head" data-reveal="">
