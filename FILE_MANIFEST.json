@@ -1,0 +1,526 @@
+{
+  "generated": "2026-07-30",
+  "file_count": 104,
+  "files": [
+    {
+      "path": "ENGLISH_UPGRADE_README.txt",
+      "bytes": 1331,
+      "sha256": "1ac77cecf22cd03a82e1069d29d0660c95c017108fe42bfd9e01df5d66c2fdf7"
+    },
+    {
+      "path": "QA_REPORT.md",
+      "bytes": 1121,
+      "sha256": "9a9f978d838a9218071dd9234ba1c70cd16fd83c1aef8daf343bea35ef36ccb0"
+    },
+    {
+      "path": "_routes.json",
+      "bytes": 179,
+      "sha256": "ee091ee829f910a49a7a69adaf33706c54e9eddb27f7692e85d181602acd7b77"
+    },
+    {
+      "path": "_worker.js",
+      "bytes": 92,
+      "sha256": "7ffd8246c0b86576695a97470a307b105ffbde895153b8425b82ffa88e6364fa"
+    },
+    {
+      "path": "assets/brand/wisal-tech-logo.png",
+      "bytes": 44002,
+      "sha256": "a503d07f72c55017759825e9dd0d226212d809eb827448ea14a3281b8840349a"
+    },
+    {
+      "path": "assets/clients/riyadh-al-doha-gray.webp",
+      "bytes": 25708,
+      "sha256": "60239f9333c534a2e940332e3259accbccde331c3a68090e27a38f7f5c672b1e"
+    },
+    {
+      "path": "assets/clients/riyadh-al-doha-white.webp",
+      "bytes": 14362,
+      "sha256": "03a3792fed7fd2d558eecc4a50696ef46ed1c34cb3777253aa95b04427f574be"
+    },
+    {
+      "path": "assets/clients/riyadh-al-doha.png",
+      "bytes": 67685,
+      "sha256": "59be3b5fbc2ed36594995865a2f36c490241645f365d5ee1ee63ddb15a4946a9"
+    },
+    {
+      "path": "assets/clients/riyadh-al-doha.webp",
+      "bytes": 32538,
+      "sha256": "facb37d3d25c47ffbe5723441d0ada30be0bac713c42acd21257fb8d68931e11"
+    },
+    {
+      "path": "assets/clients/track-group-gray.webp",
+      "bytes": 4678,
+      "sha256": "018bfe2bc5f1c146f90fbf42cab28721dd8b44520b3f5108d0e0a2c3b401fd96"
+    },
+    {
+      "path": "assets/clients/track-group-white.webp",
+      "bytes": 2680,
+      "sha256": "cb1f290b999f2c3d3812ed17a64509f21b33e043f6a075a77747108a74422e73"
+    },
+    {
+      "path": "assets/clients/track-group.png",
+      "bytes": 9938,
+      "sha256": "a1afc9c3460a102c30588160505eb2d105310dc1c922d2e544c0ef655300ffaf"
+    },
+    {
+      "path": "assets/clients/track-group.webp",
+      "bytes": 6806,
+      "sha256": "8a60d5e2fd96a3ad8bfbd4b527444b1774da81826824b635c3226387d3900073"
+    },
+    {
+      "path": "assets/clients/zeroday-academy-gray.webp",
+      "bytes": 12514,
+      "sha256": "dc2ce134b1b91363d64e877b4ae7bc1f3e8d09ccd19ee2260b89566b09973e18"
+    },
+    {
+      "path": "assets/clients/zeroday-academy-white.webp",
+      "bytes": 11752,
+      "sha256": "fa81fafb3590b7828277624c460bae7ad579d8483f6fa98fd011c1dd4c8b7c41"
+    },
+    {
+      "path": "assets/clients/zeroday-academy.png",
+      "bytes": 24314,
+      "sha256": "bd10b144442e73b5ddec7873485941fe2bed915b30f5c1331c306ae2b99b7f5d"
+    },
+    {
+      "path": "assets/clients/zeroday-academy.webp",
+      "bytes": 12672,
+      "sha256": "6fb07ff7c123dd5e53e79c4af93f4b4c2abcf0f153ad8da39f37e0f91d9a0d0a"
+    },
+    {
+      "path": "assets/founder-experience/akarat-istanbul-gray.webp",
+      "bytes": 4372,
+      "sha256": "f5085b84f31b9bc4bb187016e8ff801fdf09524fcb3aeecfb07f18fd582026cd"
+    },
+    {
+      "path": "assets/founder-experience/akarat-istanbul-white.webp",
+      "bytes": 3542,
+      "sha256": "dbb7b33f1e6dbaae0133defd02c83031a09fc43ed04c9f04b82b09487d845c5a"
+    },
+    {
+      "path": "assets/founder-experience/akarat-istanbul.png",
+      "bytes": 9716,
+      "sha256": "003bfac6039419d0977f7a5d877ada5a9d3b277d015196846a058ab33966fa38"
+    },
+    {
+      "path": "assets/founder-experience/akarat-istanbul.webp",
+      "bytes": 5948,
+      "sha256": "1de5eee74454aba15fec46b0eb7b85bf6c3debd3ff8945326591dcd194df6c7b"
+    },
+    {
+      "path": "assets/founder-experience/arkan-proje-gray.webp",
+      "bytes": 2276,
+      "sha256": "732538086cd3eae16de327f6317b141c6880a20468ef7433a5b3877ce2933a95"
+    },
+    {
+      "path": "assets/founder-experience/arkan-proje-white.webp",
+      "bytes": 2170,
+      "sha256": "481457726d21646bf3c144f32a097c8c7db524dc72e89473a87d1708cff6be30"
+    },
+    {
+      "path": "assets/founder-experience/arkan-proje.png",
+      "bytes": 4065,
+      "sha256": "7af4d41fab71f2893b07a5cf26b0b9b36f5e4ff2b6edc378a0a4cfcc81033cca"
+    },
+    {
+      "path": "assets/founder-experience/arkan-proje.webp",
+      "bytes": 2272,
+      "sha256": "f5ad7f631ec3a8f52781ef9227689d38e57244cb0acc4c469b35ba649391eb70"
+    },
+    {
+      "path": "assets/founder-experience/azhary-beauty-clinic-gray.webp",
+      "bytes": 6660,
+      "sha256": "6efcc2dbcd24ab0ef8b7eac89956dfcb5faa6d5894e4473407160000eb94767e"
+    },
+    {
+      "path": "assets/founder-experience/azhary-beauty-clinic-white.webp",
+      "bytes": 4266,
+      "sha256": "5a67dc15b82b25c98917c73394bc6a62c6b4a0cd945a342c81a394490bba2df5"
+    },
+    {
+      "path": "assets/founder-experience/azhary-beauty-clinic.png",
+      "bytes": 18104,
+      "sha256": "9a4574f29c53924668849e59d6e58d6471b7f0be04e486d51bd82e2d28b1db39"
+    },
+    {
+      "path": "assets/founder-experience/azhary-beauty-clinic.webp",
+      "bytes": 8766,
+      "sha256": "cdc5393c27a1f697ad1c492f54896b8366055ff45000507708fb835f62f19350"
+    },
+    {
+      "path": "assets/founder-experience/fiper-gray.webp",
+      "bytes": 7578,
+      "sha256": "63b2d92f3087e1380576adc77549f3aeb6128abe7de760c10b25c0522eea43ae"
+    },
+    {
+      "path": "assets/founder-experience/fiper-white.webp",
+      "bytes": 4368,
+      "sha256": "eca28c1e5b957b8a322152dea617f5331bf4af7df87eb06778ad1af212a64c78"
+    },
+    {
+      "path": "assets/founder-experience/fiper.png",
+      "bytes": 37156,
+      "sha256": "1a3191b9f5bec3b9748464afb5d36c22ff05ad560754eb817af86b049c29bdec"
+    },
+    {
+      "path": "assets/founder-experience/fiper.webp",
+      "bytes": 10248,
+      "sha256": "60d13b92066b28bfa4c93531be1751a6445b156eea3dedebe46b2c0a73cf5d60"
+    },
+    {
+      "path": "assets/founder-experience/imtilak-turkey-gray.webp",
+      "bytes": 18684,
+      "sha256": "480afbef1b8dc2529cf7e17dd77a65c336424e4d2d1ab14a695cca06544aae43"
+    },
+    {
+      "path": "assets/founder-experience/imtilak-turkey-white.webp",
+      "bytes": 13120,
+      "sha256": "900a02e93984291febdbb1f764b683bdcaef6c14d465f38f5b20d6b64cb26cf0"
+    },
+    {
+      "path": "assets/founder-experience/imtilak-turkey.png",
+      "bytes": 46972,
+      "sha256": "9044fbcf2bcab1a6ff658c3d966121a2a065881ac00e687094e54ede598bc794"
+    },
+    {
+      "path": "assets/founder-experience/imtilak-turkey.svg",
+      "bytes": 26359,
+      "sha256": "f68a27635ad2b46028a59e442eadac0e79daed527e7270a53dff6393e207fb03"
+    },
+    {
+      "path": "assets/founder-experience/imtilak-turkey.webp",
+      "bytes": 22906,
+      "sha256": "14bf1505809e786e2c22e63e70ab8b3bf78579279ca7afa45517daa6abe7870c"
+    },
+    {
+      "path": "assets/founder-experience/international-clinics-gray.webp",
+      "bytes": 16724,
+      "sha256": "012c0b0ddc724d2cd35fcb62a3d248cf57d63bef79bfc23700d5a8fdaf3c5299"
+    },
+    {
+      "path": "assets/founder-experience/international-clinics-white.webp",
+      "bytes": 11118,
+      "sha256": "021d617b075c3d7deaa1a2c974c52834387a2e2e6bf7b5d87c0a02c7122d0af2"
+    },
+    {
+      "path": "assets/founder-experience/international-clinics.png",
+      "bytes": 37477,
+      "sha256": "64756db3574bebb5ef31ee579625ee45adab0e8c4011af4487fe7169c9e80b6b"
+    },
+    {
+      "path": "assets/founder-experience/international-clinics.svg",
+      "bytes": 8104,
+      "sha256": "c1ee37dcf810126dc165b63e756e7bb51fa7538dbc54ae05d492c2bfbd4b06d5"
+    },
+    {
+      "path": "assets/founder-experience/international-clinics.webp",
+      "bytes": 23666,
+      "sha256": "c043038a4737cc7ac6da2d2fdb9612760c7936d356116e2630aaef4742441480"
+    },
+    {
+      "path": "assets/founder-experience/itqan-education-gray.webp",
+      "bytes": 18030,
+      "sha256": "e96af7ae7bb3c6daddfd3c55dfe0fc150c5f9d44e197b08e9eb758d39a8e2bb7"
+    },
+    {
+      "path": "assets/founder-experience/itqan-education-white.webp",
+      "bytes": 12356,
+      "sha256": "35bb5436a2711c821b85409c23c5488db853921e21e876b5de5641330c01e52a"
+    },
+    {
+      "path": "assets/founder-experience/itqan-education.png",
+      "bytes": 41440,
+      "sha256": "7f9a56c000d2dfec7d09ecc67d9c9a87ecb5907fd31e442eedddb3f9b9215107"
+    },
+    {
+      "path": "assets/founder-experience/itqan-education.svg",
+      "bytes": 6951,
+      "sha256": "962f881c2285a85bf9c78dcdba453591336d53f1299b84b69d6b8e5ba1c9f7a1"
+    },
+    {
+      "path": "assets/founder-experience/itqan-education.webp",
+      "bytes": 24954,
+      "sha256": "5df382aa4edc747ba33dc348370f380a5ab0a2feea85acb23034c4b507de3abd"
+    },
+    {
+      "path": "assets/founder-experience/livist-group-gray.webp",
+      "bytes": 12362,
+      "sha256": "6c82f5dc84e7e9c02e46340a30526669643750981d170ea13c099931658ae3a7"
+    },
+    {
+      "path": "assets/founder-experience/livist-group-white.webp",
+      "bytes": 6488,
+      "sha256": "5e44556c8e599cad19a8418f76ff66f49db2a5b26ce99ea6f206cc8f3752b9e1"
+    },
+    {
+      "path": "assets/founder-experience/livist-group.png",
+      "bytes": 30028,
+      "sha256": "10343ef130f0c8c86fcd2757815854c616e07fcc61b8b4d2fdc754ddcc3a627e"
+    },
+    {
+      "path": "assets/founder-experience/livist-group.webp",
+      "bytes": 16580,
+      "sha256": "1549ae087368abd34add3023f89de33c720321fe97cf2661353b3f382d58e08f"
+    },
+    {
+      "path": "assets/founder-experience/livist-medical-gray.webp",
+      "bytes": 10586,
+      "sha256": "2f566630a44c4a7e069a5d78a504c8d728b8f3f7f5808d204617498e5078074b"
+    },
+    {
+      "path": "assets/founder-experience/livist-medical-white.webp",
+      "bytes": 6190,
+      "sha256": "666748e392fe4511d76e20f68a024f513c626a3ddcf09337258eed78dbe0c32e"
+    },
+    {
+      "path": "assets/founder-experience/livist-medical.png",
+      "bytes": 25494,
+      "sha256": "d8c36c817897c8c3bfc4e1a97a1d8b0004f3f702049c8847937f787658e3c49f"
+    },
+    {
+      "path": "assets/founder-experience/livist-medical.webp",
+      "bytes": 14358,
+      "sha256": "94e49767c147229e7c450b62c3a318a872d553a888ed30c64ecc9c9e140bc60f"
+    },
+    {
+      "path": "assets/founder-experience/turkey-luxury-clinics-gray.webp",
+      "bytes": 18602,
+      "sha256": "1e1187795a90cdbe4f3bdfc67b116094af8876ee858b3b8b55e990881487750a"
+    },
+    {
+      "path": "assets/founder-experience/turkey-luxury-clinics-white.webp",
+      "bytes": 12246,
+      "sha256": "a85e568f06b926251fafccef0dfe68200e3f06e3e6ff63ecd45dc05e77d5ced7"
+    },
+    {
+      "path": "assets/founder-experience/turkey-luxury-clinics.png",
+      "bytes": 43283,
+      "sha256": "afde9c4b260f6932264d4b4fe8b9da6ebc3b569687cb3d4ef2b5957c1f63c113"
+    },
+    {
+      "path": "assets/founder-experience/turkey-luxury-clinics.svg",
+      "bytes": 13019,
+      "sha256": "5fdb3479abe396db6ab68e5ade4bc231dd8cb7f1fb63ae5a6881a856af9bc423"
+    },
+    {
+      "path": "assets/founder-experience/turkey-luxury-clinics.webp",
+      "bytes": 24758,
+      "sha256": "7602408e9b8dfba124c8e9f19097e555bd9ef49a8e69df1b9debe52ad176599e"
+    },
+    {
+      "path": "assets/pending-classification/batal-optics-gray.webp",
+      "bytes": 8790,
+      "sha256": "8e62be1647f36e89fb80e847a1a49402ddee373c6a8c86bbef2a3cbeb82d2804"
+    },
+    {
+      "path": "assets/pending-classification/batal-optics-white.webp",
+      "bytes": 2106,
+      "sha256": "1046a5a32f761cf4126cea1e700bc6f4632d340ec561f06fe318305f8f308ef1"
+    },
+    {
+      "path": "assets/pending-classification/batal-optics.png",
+      "bytes": 39103,
+      "sha256": "1e3b3ae131b353d2bde2ea147e760c6ab7ba667b1cf3f33ec463d047f0cecae0"
+    },
+    {
+      "path": "assets/pending-classification/batal-optics.webp",
+      "bytes": 10960,
+      "sha256": "2d7d85b696b7e69cfdc7dee7c3c33a45f768651aaf4c74ba4bd8b475e08cece4"
+    },
+    {
+      "path": "assets/pending-classification/child-diapers-gray.webp",
+      "bytes": 9410,
+      "sha256": "ba5131b8b78487358a3fdb93dcabaa65331e7f383daffc515b1a0755371be8ae"
+    },
+    {
+      "path": "assets/pending-classification/child-diapers-white.webp",
+      "bytes": 5732,
+      "sha256": "5c412ca2b32d3b8cb27c607983648683c302d972cbf0ad6c6e38108d6752774e"
+    },
+    {
+      "path": "assets/pending-classification/child-diapers.png",
+      "bytes": 24451,
+      "sha256": "e10ff30909df0b76cf77c14c2086db71234a5459ef7542a86b62f119ba929c83"
+    },
+    {
+      "path": "assets/pending-classification/child-diapers.webp",
+      "bytes": 13026,
+      "sha256": "bd0e933703c56e2bfcd1b85719f3b639dbeb9cb48a51b7cfce50bb0290ca4b6e"
+    },
+    {
+      "path": "assets/pending-classification/medical-heart-brand-gray.webp",
+      "bytes": 17236,
+      "sha256": "c5efad03e720e357b9c27df30577dc942b1b0e68fd6e02931f67487efb3da4f2"
+    },
+    {
+      "path": "assets/pending-classification/medical-heart-brand-white.webp",
+      "bytes": 12390,
+      "sha256": "604d6fce01af0d626d434925fb70998a31a2a35276c6f00af0bd4871dc2027fd"
+    },
+    {
+      "path": "assets/pending-classification/medical-heart-brand.png",
+      "bytes": 38856,
+      "sha256": "441e6acd9b357dd0ed023441455d146930dbd7eb5aff32d7d94cfe6290773cdd"
+    },
+    {
+      "path": "assets/pending-classification/medical-heart-brand.svg",
+      "bytes": 119233,
+      "sha256": "7374fd1a71a204959237bb8872c230359bcaf45086d922adb6ee3f0f23ce03ab"
+    },
+    {
+      "path": "assets/pending-classification/medical-heart-brand.webp",
+      "bytes": 21984,
+      "sha256": "5d1feb5fd3227fe39db9b96b68ea83be01d7ae82997455803395d4a0f4208314"
+    },
+    {
+      "path": "assets/pending-classification/unclassified-orbit-brand-gray.webp",
+      "bytes": 12522,
+      "sha256": "9c25225bf3a1e9a1bd321cb533a29eba1dce7df7a887d5e37a693a03424cc0a1"
+    },
+    {
+      "path": "assets/pending-classification/unclassified-orbit-brand-white.webp",
+      "bytes": 10670,
+      "sha256": "b877315e28457a73fe2b54cc3842e941d5baf64457ff9b6f57abeda113b977da"
+    },
+    {
+      "path": "assets/pending-classification/unclassified-orbit-brand.png",
+      "bytes": 28662,
+      "sha256": "7522fc0ed82db3e035cd7e71cd53564496efb434e2b4cbe76f5a3f412ac05426"
+    },
+    {
+      "path": "assets/pending-classification/unclassified-orbit-brand.svg",
+      "bytes": 50535,
+      "sha256": "191be0a4adbe1af38b4b651d8fc5da093cd28a96cc1b9a69db3e7471eaba4f53"
+    },
+    {
+      "path": "assets/pending-classification/unclassified-orbit-brand.webp",
+      "bytes": 14268,
+      "sha256": "7b2fbceb4b6bd3e8dc17ea204a738bdad35adb5f0f88fc8e478820140df39f5a"
+    },
+    {
+      "path": "data/trust-content.json",
+      "bytes": 11170,
+      "sha256": "b91152fba4524b6af2011e10d58ae5cc5d09aa16fd53d2a8d6c884a374f30423"
+    },
+    {
+      "path": "en/about/index.html",
+      "bytes": 22231,
+      "sha256": "e20aa2dbaf1d8fe3b9a090b80dc02534d3c0a8a32b372f7d47c304d4d6a2616d"
+    },
+    {
+      "path": "en/blog/brand-identity-vs-logo/index.html",
+      "bytes": 18685,
+      "sha256": "e53b1e51f868e0c6380462590e41f18378dbcab3f92206f5525f7d58bb38f001"
+    },
+    {
+      "path": "en/blog/content-system-that-lasts/index.html",
+      "bytes": 18954,
+      "sha256": "0e30686ac9f19d0c648a118fa5567b575eaf02fd89088a32b0fa0484bc923924"
+    },
+    {
+      "path": "en/blog/how-to-choose-marketing-agency-qatar/index.html",
+      "bytes": 19299,
+      "sha256": "7d10028d94eaa0167fc187189dd3932a6e9a5c467cd568ce39ff5229bcc193c9"
+    },
+    {
+      "path": "en/blog/index.html",
+      "bytes": 16597,
+      "sha256": "9d9b32aabd1f1815b604c575e321cbe2d67287d36feddfb79fc91cd569a8db4d"
+    },
+    {
+      "path": "en/blog/landing-page-or-full-site/index.html",
+      "bytes": 18242,
+      "sha256": "9529e7eb3db0fb271bbdc1a59f557bd90a1f6b3feeebd13f2330029759501efd"
+    },
+    {
+      "path": "en/blog/seo-as-growth-channel/index.html",
+      "bytes": 18687,
+      "sha256": "395e028cf1d9ec9ab4deb4d1eef11fad75827d02fadb81d5d46c3e9e66b0032b"
+    },
+    {
+      "path": "en/contact/index.html",
+      "bytes": 19549,
+      "sha256": "c47f06c06801f61c06d0cf3a9db8bb9bbdb1b2608108987d44cac5785e67cce5"
+    },
+    {
+      "path": "en/index.html",
+      "bytes": 28068,
+      "sha256": "d5e0c6e840fe5817317218cbf6a7dc7a65b70129c1b69ae74be35109268d556c"
+    },
+    {
+      "path": "en/privacy-policy/index.html",
+      "bytes": 20009,
+      "sha256": "fefc6d94c6fe89c5bbafcff90bc4beca89a7bb9bbdc560ec6c9072abe48223a2"
+    },
+    {
+      "path": "en/services/branding/index.html",
+      "bytes": 23632,
+      "sha256": "09912264faca13cc6ed2bee23cb94c6e8a99646b87fe3c889c96dcac3c9fadc6"
+    },
+    {
+      "path": "en/services/digital-marketing/index.html",
+      "bytes": 21554,
+      "sha256": "c9c910d823dd6172056d1e62d32a42a4ca63b7f80768c4208a7f9e50d186c6b3"
+    },
+    {
+      "path": "en/services/erp/index.html",
+      "bytes": 20049,
+      "sha256": "6f640acbe4c322566a61e2b6749b03ddddd9581a114f160742e47aaeacddfe1b"
+    },
+    {
+      "path": "en/services/graphic-design/index.html",
+      "bytes": 19410,
+      "sha256": "7b9dd561dc2f17958efdcdb02be1fc3b84d4f2c3c2297407bf52fdcd70c75bac"
+    },
+    {
+      "path": "en/services/index.html",
+      "bytes": 22970,
+      "sha256": "ad56a6fe2687c1c5c68dd3338f01631ade9024380daab65e19966a4b684d49d8"
+    },
+    {
+      "path": "en/services/it-office-tech/index.html",
+      "bytes": 20805,
+      "sha256": "d895ed446a39283b6401dca558c725c95a4a53e3be9f1b27cf984c9acf401cf5"
+    },
+    {
+      "path": "en/services/nfc-digital-cards/index.html",
+      "bytes": 19319,
+      "sha256": "62fcecda933cffeb209c5988b2c46e498ce30f8e8059e963e09725e8e26cf07f"
+    },
+    {
+      "path": "en/services/printing/index.html",
+      "bytes": 19405,
+      "sha256": "e4981c5238490bbfcf0cfafc6df169ea6aed274908ac43f0c4974af565623d68"
+    },
+    {
+      "path": "en/services/seo/index.html",
+      "bytes": 24486,
+      "sha256": "ebed37740fea24f06ba2d965d934a50bf3c0aeeb343a97347f32e6190b8ea4a6"
+    },
+    {
+      "path": "en/services/web-development/index.html",
+      "bytes": 20919,
+      "sha256": "ad117b9e25d7245ae480448eb22be481b0fe4530526760e735afc63055672429"
+    },
+    {
+      "path": "en/terms-of-use/index.html",
+      "bytes": 20101,
+      "sha256": "6d75bf79ddaab3b6eb1c416f225fd7ef4bfc2c29ea8397de81667c5c53f5c4f4"
+    },
+    {
+      "path": "en/work/index.html",
+      "bytes": 28524,
+      "sha256": "41b5a230f978875bb7580c2fda383f58f9e1f0f1013239c28441f6c7ed58e8fa"
+    },
+    {
+      "path": "static/css/wisal-english-final.css",
+      "bytes": 14592,
+      "sha256": "84fd885ec6c26c1f7bd3ce8af6f2a9203f6ce18c07b0534b46114a3c868eaf1f"
+    },
+    {
+      "path": "static/js/wisal-english-final.js",
+      "bytes": 1808,
+      "sha256": "cea2d7a7f3f0e85e23fc09a1af08f68c8ba677776b888a39c11b4c492e4622ce"
+    }
+  ]
+}

@@ -95,6 +95,57 @@
     .divider-glow{stroke:var(--mint);stroke-width:2;fill:none;stroke-dasharray:110 3000;opacity:.85;animation:dividerGlow 6s linear infinite}
     @keyframes dividerGlow{to{stroke-dashoffset:-3100}}
     .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.stat-card{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow-1)}.stat-card strong{font-family:"Manrope";font-size:clamp(2.2rem,4vw,4rem);color:var(--maroon);line-height:1}.stat-card span{display:block;margin-top:10px;color:var(--muted)}
+    /* WISAL STATS SECTION CSS START */
+    .count[data-suffix]{direction:ltr;unicode-bidi:isolate}
+    .count[data-suffix]::after{content:attr(data-suffix)}
+    .stats-grid{grid-template-columns:repeat(4,1fr)}
+    .stat-card{position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:200px}
+    .stat-bg{position:absolute;inset-inline-end:-22px;bottom:-22px;width:130px;height:130px;color:var(--mint);opacity:.09;pointer-events:none}
+    .stat-card strong,.stat-card>span,.stat-flags{position:relative;z-index:1}
+    .stat-card>span{max-width:240px}
+    .stat-flags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+    .stat-flags svg{width:27px;height:18px;border-radius:4px;box-shadow:0 0 0 1px var(--line);display:block}
+    @media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+    /* WISAL STATS SECTION CSS END */
+    /* WISAL TRUST SECTION CSS START */
+    .trust-label{font-size:.85rem;font-weight:400;letter-spacing:.08em;color:var(--muted);margin:36px 0 14px;display:flex;align-items:center;gap:12px}
+    .trust-label::after{content:"";flex:1;height:1px;background:var(--line)}
+    .logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+    .logo-tile{position:relative;display:flex;align-items:center;justify-content:center;height:96px;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);transition:border-color .3s,transform .3s,box-shadow .3s}
+    .logo-tile:hover{border-color:rgba(22,163,74,.45);transform:translateY(-3px);box-shadow:var(--shadow-1)}
+    .logo-mono{max-width:100%;max-height:100%;object-fit:contain;opacity:.72;transition:opacity .35s}
+    .logo-mono.filter-white{filter:brightness(0) invert(1)}
+    .logo-color{position:absolute;inset:0;padding:20px;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .35s}
+    .logo-tile:hover .logo-mono{opacity:0}
+    .logo-tile:hover .logo-color{opacity:1}
+    .trust-note{margin-top:18px;color:var(--muted);font-size:.85rem;max-width:640px}
+    /* WISAL TRUST SECTION CSS END */
+    /* WISAL TESTIMONIALS SECTION CSS START */
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .testimonial-card{position:relative;display:flex;flex-direction:column;gap:14px;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow-1)}
+    .testimonial-card blockquote{margin:0;font-size:1.02rem;line-height:1.8}
+    .testimonial-quote-mark{font-family:"Manrope";font-size:2.6rem;line-height:.6;color:var(--mint);opacity:.55}
+    .testimonial-meta{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+    .testimonial-avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(22,163,74,.14);color:var(--mint);flex:none}
+    .testimonial-meta b{display:block;font-size:.92rem}
+    .testimonial-meta small{color:var(--muted)}
+    .demo-badge{position:absolute;top:14px;inset-inline-end:14px;font-size:.63rem;letter-spacing:.08em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+    @media(max-width:1100px){.testimonials-grid{grid-template-columns:1fr}}
+    /* WISAL TESTIMONIALS SECTION CSS END */
+    /* WISAL REVIEWS SECTION CSS START */
+    .reviews-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none;outline:none}
+    .reviews-track::-webkit-scrollbar{display:none}
+    .review-card{position:relative;flex:0 0 min(340px,85%);scroll-snap-align:start;display:flex;flex-direction:column;gap:13px;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+    .review-card p{margin:0;line-height:1.8}
+    .review-stars{color:#FFC53D;letter-spacing:2px;font-size:.95rem}
+    .review-source{display:inline-flex;align-items:center;gap:7px;font-size:.74rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 11px;width:max-content}
+    .review-source svg{width:13px;height:13px}
+    .review-meta{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.85rem}
+    .reviews-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+    .reviews-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:inherit;display:grid;place-items:center;cursor:pointer;transition:border-color .3s,transform .3s}
+    .reviews-nav button:hover{border-color:rgba(22,163,74,.5);transform:translateY(-2px)}
+    html[dir="rtl"] .reviews-nav svg{transform:scaleX(-1)}
+    /* WISAL REVIEWS SECTION CSS END */
     .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.problem-card{padding:28px;min-height:260px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;box-shadow:var(--shadow-1);transition:.3s var(--ease)}
     .problem-card-fragmentation{background-image:linear-gradient(180deg,rgba(13,27,61,.55) 0%,rgba(10,16,32,.75) 55%,rgba(10,16,32,.94) 100%),url(/images/wisal-home/problem-fragmentation.webp);background-size:cover;background-position:center}
     .problem-card-activity{background-image:linear-gradient(180deg,rgba(13,27,61,.55) 0%,rgba(10,16,32,.75) 55%,rgba(10,16,32,.94) 100%),url(/images/wisal-home/problem-activity.webp);background-size:cover;background-position:center}
@@ -340,13 +391,68 @@
         <div class="marquee marquee-2" aria-hidden="true"><span>DOHA</span><span>QATAR</span><span>GROWTH SYSTEM</span><span>MEASUREMENT</span><span>MOTION</span><span>DESIGN</span><span>DOHA</span><span>QATAR</span><span>GROWTH SYSTEM</span><span>MEASUREMENT</span><span>MOTION</span><span>DESIGN</span></div>
       </div>
       <div class="section-divider" aria-hidden="true"><svg viewBox="0 0 1600 80" preserveAspectRatio="none"><path class="divider-line" d="M0,40 L620,40 L660,15 L940,15 L980,40 L1600,40"/><path class="divider-glow" d="M0,40 L620,40 L660,15 L940,15 L980,40 L1600,40"/></svg></div>
+      <!-- WISAL STATS SECTION START -->
       <section class="section-sm">
         <div class="container stats-grid" data-reveal>
-          <div class="stat-card"><strong class="count" data-count="22">0</strong><span>خدمة ضمن منظومة واحدة</span></div>
-          <div class="stat-card"><strong class="count" data-count="3">0</strong><span>محاور: علامة، نمو، تقنية</span></div>
-          <div class="stat-card"><strong class="count" data-count="1">0</strong><span>نقطة اتصال واحدة لمشروعك</span></div>
+          <div class="stat-card">
+            <svg class="stat-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5 7 21l5-2.6L17 21l-1.5-7.5M12 6.6l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2L9.1 8.7l2-.3z"/></svg>
+            <strong class="count" data-count="10" data-suffix="+">0</strong><span>سنوات من الخبرة العملية</span>
+          </div>
+          <div class="stat-card">
+            <svg class="stat-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19.5c.6-3.4 2.8-5.3 5.5-5.3s4.9 1.9 5.5 5.3M15.8 5.2a3.4 3.4 0 0 1 0 5.6M18.4 14.6c1.4.9 2.4 2.6 2.8 4.9"/></svg>
+            <strong class="count" data-count="50" data-suffix="+">0</strong><span>عميل وشريك نجاح</span>
+          </div>
+          <div class="stat-card">
+            <svg class="stat-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.4 4 5.6 4 9s-1.3 6.6-4 9c-2.7-2.4-4-5.6-4-9s1.3-6.6 4-9z"/></svg>
+            <strong class="count" data-count="6">0</strong><span>أسواق نعمل بها</span>
+            <div class="stat-flags" aria-label="قطر، تركيا، السعودية، اليمن، مصر، ماليزيا">
+              <svg viewBox="0 0 24 16" role="img" aria-label="قطر"><title>قطر</title><rect width="24" height="16" fill="#8A1538"/><path d="M0 0h7l3 .89-3 .89 3 .89-3 .89 3 .88-3 .89 3 .89-3 .89 3 .89-3 .89 3 .89-3 .89 3 .88-3 .89 3 .89-3 .89 3 .89L7 16H0z" fill="#fff"/></svg>
+              <svg viewBox="0 0 24 16" role="img" aria-label="تركيا"><title>تركيا</title><rect width="24" height="16" fill="#E30A17"/><circle cx="9" cy="8" r="4" fill="#fff"/><circle cx="10" cy="8" r="3.2" fill="#E30A17"/><path d="m14.6 6.3.52 1.6h1.68l-1.36 1 .52 1.6-1.36-.99-1.36.99.52-1.6-1.36-1h1.68z" fill="#fff"/></svg>
+              <svg viewBox="0 0 24 16" role="img" aria-label="السعودية"><title>السعودية</title><rect width="24" height="16" fill="#006C35"/><rect x="4" y="4.6" width="16" height="1.7" rx=".85" fill="#fff" opacity=".95"/><rect x="4.6" y="9.6" width="13" height="1.3" rx=".65" fill="#fff"/><path d="m18.4 9.3 2.4.95-2.4.95z" fill="#fff"/></svg>
+              <svg viewBox="0 0 24 16" role="img" aria-label="اليمن"><title>اليمن</title><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#CE1126"/><rect y="10.67" width="24" height="5.33" fill="#000"/></svg>
+              <svg viewBox="0 0 24 16" role="img" aria-label="مصر"><title>مصر</title><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#CE1126"/><rect y="10.67" width="24" height="5.33" fill="#000"/><path d="M12 6.4c.9 0 1.6.5 1.6 1.4 0 .8-.5 1.5-1.6 1.8-1.1-.3-1.6-1-1.6-1.8 0-.9.7-1.4 1.6-1.4z" fill="#C09300"/></svg>
+              <svg viewBox="0 0 24 16" role="img" aria-label="ماليزيا"><title>ماليزيا</title><rect width="24" height="16" fill="#fff"/><g fill="#CC0001"><rect width="24" height="2"/><rect y="4" width="24" height="2"/><rect y="8" width="24" height="2"/><rect y="12" width="24" height="2"/></g><rect width="12" height="8" fill="#010066"/><circle cx="4.6" cy="4" r="2.5" fill="#FFCC00"/><circle cx="5.6" cy="4" r="2.1" fill="#010066"/><circle cx="8.6" cy="4" r="1.4" fill="#FFCC00"/></svg>
+            </div>
+          </div>
+          <div class="stat-card">
+            <svg class="stat-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1M20.5 3.5v3.6h-3.6"/><circle cx="12" cy="12" r="3"/></svg>
+            <strong class="count" data-count="360" data-suffix="°">0</strong><span>منظومة متكاملة من العلامة إلى النمو</span>
+          </div>
         </div>
       </section>
+      <!-- WISAL STATS SECTION END -->
+      <!-- WISAL TRUST SECTION START -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div><span class="kicker latin">TRUSTED BY</span><h2>موثوقون من <span class="section-title-accent">علامات حقيقية</span>.</h2></div>
+            <p>خبرات سابقة للمؤسس والفريق عبر قطاعات التعليم والصحة والعقارات والتقنية والتجزئة.</p>
+          </div>
+          <div data-reveal>
+            <h3 class="trust-label">من خبرات المؤسس والفريق</h3>
+            <div class="logo-grid">
+              <div class="logo-tile" role="img" aria-label="ZeroDay Academy"><img class="logo-mono" src="/assets/clients/zeroday-academy-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/clients/zeroday-academy.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Track Group"><img class="logo-mono" src="/assets/clients/track-group-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/clients/track-group.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="رياض الدوحة"><img class="logo-mono" src="/assets/clients/riyadh-al-doha-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/clients/riyadh-al-doha.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Livist Group"><img class="logo-mono" src="/assets/founder-experience/livist-group-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/livist-group.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Livist Medical"><img class="logo-mono" src="/assets/founder-experience/livist-medical-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/livist-medical.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="عقارات إسطنبول"><img class="logo-mono" src="/assets/founder-experience/akarat-istanbul-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/akarat-istanbul.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Fiper"><img class="logo-mono" src="/assets/founder-experience/fiper-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/fiper.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Imtilak Turkey"><img class="logo-mono" src="/assets/founder-experience/imtilak-turkey-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/imtilak-turkey.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Arkan Proje"><img class="logo-mono" src="/assets/founder-experience/arkan-proje-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/arkan-proje.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Turkey Luxury Clinics"><img class="logo-mono" src="/assets/founder-experience/turkey-luxury-clinics-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/turkey-luxury-clinics.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="International Clinics"><img class="logo-mono" src="/assets/founder-experience/international-clinics-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/international-clinics.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="أشعري بيوتي كلينك"><img class="logo-mono" src="/assets/founder-experience/azhary-beauty-clinic-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/azhary-beauty-clinic.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="إتقان التعليمية"><img class="logo-mono" src="/assets/founder-experience/itqan-education-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/itqan-education.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="بطل التخصصي"><img class="logo-mono" src="/assets/founder-experience/batal-optics-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/batal-optics.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="Child Diapers"><img class="logo-mono" src="/assets/founder-experience/child-diapers-white.webp" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/child-diapers.webp" alt="" loading="lazy" decoding="async"></div>
+              <div class="logo-tile" role="img" aria-label="مركز سند"><img class="logo-mono filter-white" src="/assets/founder-experience/sanad-center.png" alt="" loading="lazy" decoding="async"><img class="logo-color" src="/assets/founder-experience/sanad-center.png" alt="" loading="lazy" decoding="async"></div>
+            </div>
+          </div>
+          <p class="trust-note">تشمل القائمة أعلاه خبرات سابقة للمؤسس والفريق قبل تأسيس وصال تك، وهي معروضة للدلالة على الخبرة وليست جميعها عملاء مباشرين للشركة.</p>
+        </div>
+      </section>
+      <!-- WISAL TRUST SECTION END -->
       <section class="section section-alt">
         <div class="container">
           <div class="section-head" data-reveal>
@@ -645,6 +751,52 @@
           </tbody></table></div>
         </div>
       </section>
+      <!-- WISAL REVIEWS SECTION START (hidden until verified reviews are supplied; remove the hidden attribute to enable) -->
+      <!-- DEMO CONTENT: review cards are placeholders pending verified Google/Instagram/WhatsApp reviews. Replace text/names, keep structure. -->
+      <section class="section-sm" hidden aria-hidden="true">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <div><span class="kicker latin">REVIEWS</span><h2>مراجعات <span class="section-title-accent">موثقة</span> من عملائنا.</h2></div>
+            <p>مراجعات من Google وInstagram وWhatsApp. المحتوى الحالي نموذج مؤقت حتى إضافة المراجعات الموثقة.</p>
+          </div>
+          <div class="reviews-track" id="reviews-track" tabindex="0" role="region" aria-label="مراجعات العملاء — استخدم الأسهم للتنقل" data-reveal>
+            <article class="review-card" data-demo="true">
+              <span class="demo-badge latin">DEMO</span>
+              <span class="review-stars" aria-label="خمس نجوم">★★★★★</span>
+              <p>خدمة احترافية وسرعة في التنفيذ. الفريق متعاون ويشرح كل خطوة بوضوح.</p>
+              <div class="review-meta"><span>عميل — نموذج مؤقت</span><span class="review-source"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v2.9h5.35c-.5 2.4-2.6 3.9-5.35 3.9a6 6 0 1 1 0-12c1.5 0 2.9.55 3.95 1.45l2.15-2.15A9 9 0 1 0 12 21c5.2 0 8.85-3.65 8.85-8.8 0-.4-.05-.75-.1-1.1z"/></svg>Google</span></div>
+            </article>
+            <article class="review-card" data-demo="true">
+              <span class="demo-badge latin">DEMO</span>
+              <span class="review-stars" aria-label="خمس نجوم">★★★★★</span>
+              <p>تصميم الهوية طلع أفضل من المتوقع، والتسليم كان ملفات كاملة منظمة وجاهزة للاستخدام.</p>
+              <div class="review-meta"><span>عميل — نموذج مؤقت</span><span class="review-source"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>Instagram</span></div>
+            </article>
+            <article class="review-card" data-demo="true">
+              <span class="demo-badge latin">DEMO</span>
+              <span class="review-stars" aria-label="خمس نجوم">★★★★★</span>
+              <p>تواصل سريع ومتابعة مستمرة حتى بعد التسليم. نتعامل معهم في كل مشاريعنا القادمة.</p>
+              <div class="review-meta"><span>عميل — نموذج مؤقت</span><span class="review-source"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.36A10 10 0 1 0 12 2zm5 13.5c-.25.7-1.4 1.3-2 1.35-.55.05-1.2.2-3.9-.85-3.3-1.3-5.4-4.65-5.55-4.85-.15-.2-1.35-1.8-1.35-3.4 0-1.6.85-2.4 1.15-2.7.3-.3.65-.4.85-.4h.6c.2 0 .45-.05.7.55.25.6.9 2.2.95 2.35.05.15.1.35 0 .55-.1.2-.15.35-.3.5l-.45.55c-.15.15-.3.3-.15.6.15.3.75 1.2 1.6 1.95 1.1.95 2 1.3 2.3 1.45.3.15.5.1.65-.05.15-.15.75-.85.95-1.15.2-.3.4-.25.65-.15.25.1 1.65.8 1.95.95.3.15.5.2.55.3.1.2.1.75-.15 1.45z"/></svg>WhatsApp</span></div>
+            </article>
+            <article class="review-card" data-demo="true">
+              <span class="demo-badge latin">DEMO</span>
+              <span class="review-stars" aria-label="خمس نجوم">★★★★★</span>
+              <p>أسعار واضحة من البداية وبدون مفاجآت، والنتيجة النهائية تستاهل كل ريال.</p>
+              <div class="review-meta"><span>عميل — نموذج مؤقت</span><span class="review-source"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12v2.9h5.35c-.5 2.4-2.6 3.9-5.35 3.9a6 6 0 1 1 0-12c1.5 0 2.9.55 3.95 1.45l2.15-2.15A9 9 0 1 0 12 21c5.2 0 8.85-3.65 8.85-8.8 0-.4-.05-.75-.1-1.1z"/></svg>Google</span></div>
+            </article>
+          </div>
+          <div class="reviews-nav">
+            <button type="button" id="reviews-prev" aria-label="المراجعة السابقة"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button type="button" id="reviews-next" aria-label="المراجعة التالية"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </section>
+      <script>
+      /* WISAL REVIEWS SECTION JS START */
+      (function(){var t=document.getElementById('reviews-track');if(!t)return;var step=function(){var c=t.querySelector('.review-card');return c?c.getBoundingClientRect().width+16:320};var rtl=document.documentElement.dir==='rtl';var go=function(s){t.scrollBy({left:s*step()*(rtl?-1:1),behavior:'smooth'})};var p=document.getElementById('reviews-prev'),n=document.getElementById('reviews-next');if(p)p.addEventListener('click',function(){go(-1)});if(n)n.addEventListener('click',function(){go(1)});t.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();go(rtl?1:-1)}else if(e.key==='ArrowRight'){e.preventDefault();go(rtl?-1:1)}});})();
+      /* WISAL REVIEWS SECTION JS END */
+      </script>
+      <!-- WISAL REVIEWS SECTION END -->
       <section class="section"><div class="container"><div class="cta-panel" data-reveal><div><span class="kicker latin" style="color:var(--mint)">YOUR NEXT GROWTH SYSTEM</span><h2>لنبدأ بالمشكلة الصحيحة، لا بالخدمة الأسرع.</h2><p>أرسل لنا نبذة عن مشروعك. سنحوّلها إلى مسار واضح: ما الذي تحتاجه الآن، وما الذي يمكن تأجيله، وكيف نربط التنفيذ بنتيجة قابلة للقياس.</p></div><div class="cta-actions"><a class="btn btn-gold magnetic" href="/contact/">أرسل نبذة المشروع</a><a class="btn btn-ghost magnetic" href="/work/">استعرض الأعمال</a></div></div></div></section>
   </main>
 
