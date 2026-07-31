@@ -441,5 +441,17 @@
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     @media(max-width:1100px){.nav.mobile-open a{width:100%;padding:13px 15px}.nav.mobile-open a.active{background:var(--soft)}}
   </style>
+<!-- WISAL WHATSAPP BUTTON START -->
+<style>
+.wa-float{position:fixed;bottom:18px;right:18px;z-index:90;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.4);transition:transform .25s ease}
+.wa-float:hover{transform:scale(1.09)}
+.wa-float svg{width:31px;height:31px;fill:#fff}
+.wa-float::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(37,211,102,.45);animation:waPulse 2.2s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(.85);opacity:1}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
+@media(max-width:720px){.wa-float{width:53px;height:53px;bottom:14px;right:14px}.wa-float svg{width:28px;height:28px}}
+@media(prefers-reduced-motion:reduce){.wa-float::after{animation:none;opacity:0}}
+</style>
+<a class="wa-float" href="https://wa.me/97433803318?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D9%88%D8%B5%D8%A7%D9%84%20%D8%AA%D9%83%20%F0%9F%91%8B%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب" title="تواصل معنا عبر واتساب"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.36A10 10 0 1 0 12 2zm5 13.5c-.25.7-1.4 1.3-2 1.35-.55.05-1.2.2-3.9-.85-3.3-1.3-5.4-4.65-5.55-4.85-.15-.2-1.35-1.8-1.35-3.4 0-1.6.85-2.4 1.15-2.7.3-.3.65-.4.85-.4h.6c.2 0 .45-.05.7.55.25.6.9 2.2.95 2.35.05.15.1.35 0 .55-.1.2-.15.35-.3.5l-.45.55c-.15.15-.3.3-.15.6.15.3.75 1.2 1.6 1.95 1.1.95 2 1.3 2.3 1.45.3.15.5.1.65-.05.15-.15.75-.85.95-1.15.2-.3.4-.25.65-.15.25.1 1.65.8 1.95.95.3.15.5.2.55.3.1.2.1.75-.15 1.45z"/></svg></a>
+<!-- WISAL WHATSAPP BUTTON END -->
 </body>
 </html>
