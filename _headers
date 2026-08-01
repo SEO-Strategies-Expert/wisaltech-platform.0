@@ -1,8 +1,19 @@
 # Cloudflare Pages custom headers
+
+# The CMS rewrites this file on every theme save, so it must never be held in
+# a browser cache - otherwise colour/font changes stay invisible for hours.
+/static/css/wisal-theme.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+/data/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex
+
 /web-Portfolio
   X-Robots-Tag: noindex, nofollow, noarchive
 /web-Portfolio/*
   X-Robots-Tag: noindex, nofollow, noarchive
+
 /admin
   X-Robots-Tag: noindex, nofollow, noarchive
   X-Frame-Options: DENY
