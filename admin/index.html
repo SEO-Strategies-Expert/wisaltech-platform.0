@@ -596,7 +596,7 @@ function updateBar(){
 function buildProbe(payload){
   if(payload.theme&&payload.theme.vars){
     const k=Object.keys(payload.theme.vars)[0];
-    return{url:'/api/theme.css',expect:`--cms-${k}:${payload.theme.vars[k]}`};
+    return{url:'/api/theme',expect:`--cms-${k}:${payload.theme.vars[k]}`};
   }
   for(const path of Object.keys(payload.pages||{})){
     const texts=payload.pages[path].texts||{};

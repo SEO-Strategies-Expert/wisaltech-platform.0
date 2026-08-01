@@ -13,7 +13,7 @@
  *   GITHUB_BRANCH  optional, defaults to main
  */
 
-const BUILD = 5;          // bump on every worker change to verify what is live
+const BUILD = 6;          // bump on every worker change to verify what is live
 const COOKIE = 'wt_cms';
 const SESSION_HOURS = 12;
 const INLINE_TAGS = ['em', 'strong', 'b', 'i', 'u', 'small', 'sup', 'sub', 'br', 'span'];
@@ -376,12 +376,12 @@ export default {
       }
     }
 
-    // Pages serves everything under /static with a four-hour browser cache and
-    // ignores both `_headers` rules and `_routes.json` includes for it, which
-    // would hide colour and font changes for hours after a save. Every page
-    // therefore links the theme through this worker-owned path, where we do
-    // control the headers. The ETag still lets browsers answer 304.
-    if (url.pathname === '/api/theme.css') {
+    // Cloudflare's edge caches by file extension and then stamps its own
+    // four-hour Browser Cache TTL on the response, which overrode every header
+    // we set and kept colour and font changes hidden for hours. This path has
+    // no extension, so the edge leaves it alone and our header survives.
+    // The ETag still lets browsers answer 304, so nothing is re-downloaded.
+    if (url.pathname === '/api/theme' || url.pathname === '/api/theme.css') {
       const res = await env.ASSETS.fetch(new Request(new URL(THEME_SOURCE, url.origin), request));
       const out = new Response(res.body, res);
       out.headers.set('Content-Type', 'text/css; charset=utf-8');
