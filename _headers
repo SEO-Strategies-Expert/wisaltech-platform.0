@@ -3,3 +3,9 @@
   X-Robots-Tag: noindex, nofollow, noarchive
 /web-Portfolio/*
   X-Robots-Tag: noindex, nofollow, noarchive
+/admin
+  X-Robots-Tag: noindex, nofollow, noarchive
+  X-Frame-Options: DENY
+/admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  X-Frame-Options: DENY

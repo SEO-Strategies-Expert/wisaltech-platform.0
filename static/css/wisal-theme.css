@@ -1,0 +1,123 @@
+/* Wisal Tech theme layer — loaded last on every page so it wins over the
+   inline page styles. Everything above CMS-VARS-END is rewritten by the CMS
+   when the owner saves the theme; the rules below it are fixed plumbing. */
+
+/* CMS-VARS-START */
+:root{
+  --cms-paper:#0A1020;
+  --cms-card:#10193A;
+  --cms-navy:#0D1B3D;
+  --cms-deep:#1B2F63;
+  --cms-accent:#16A34A;
+  --cms-accent-2:#22C55E;
+  --cms-ink:#FFFFFF;
+  --cms-muted:#A9B4C9;
+  --cms-soft:#142047;
+  --cms-line:rgba(255,255,255,.10);
+  --cms-font-ar:"IBM Plex Sans Arabic";
+  --cms-font-ar-head:"Hacen Saudi Arabia";
+  --cms-font-en:"Titillium Web";
+  --cms-font-en-head:"Titillium Web";
+  --cms-font-latin:"Manrope";
+  --cms-font-scale:1;
+  --cms-radius-sm:14px;
+  --cms-radius:24px;
+  --cms-radius-lg:36px;
+  --cms-hero-img:.85;
+  --cms-hero-bright:1.4;
+  --cms-hero-tiles:.88;
+  --cms-hero-tiles-mobile:.7;
+  --cms-hero-scrim:.2;
+  --cms-hero-vignette:.32;
+  --cms-problem-overlay:.34;
+  --cms-card-overlay:.45;
+  --cms-img-problem-1:url(/images/wisal-home/problem-fragmentation.webp);
+  --cms-img-problem-2:url(/images/wisal-home/problem-activity.webp);
+  --cms-img-problem-3:url(/images/wisal-home/problem-measurement.webp);
+  --cms-img-bento-branding:url(/images/wisal-home/bento-branding.webp);
+  --cms-img-bento-performance:url(/images/wisal-home/bento-performance.webp);
+  --cms-img-bento-web:url(/images/wisal-home/bento-web.webp);
+  --cms-img-bento-content:url(/images/wisal-home/bento-content.webp);
+  --cms-img-bento-tech:url(/images/wisal-home/bento-tech.webp);
+  --cms-img-hero:url(/images/wisal-sections/10-hero-moving-rows-background.webp);
+}
+/* CMS-VARS-END */
+
+/* ---- brand tokens -------------------------------------------------- */
+:root{
+  --paper:var(--cms-paper);
+  --card:var(--cms-card);
+  --cream:var(--cms-card);
+  --navy:var(--cms-navy);
+  --deep:var(--cms-deep);
+  --maroon:var(--cms-accent);
+  --mint:var(--cms-accent);
+  --maroon-2:var(--cms-accent-2);
+  --mint-2:var(--cms-accent-2);
+  --ink:var(--cms-ink);
+  --muted:var(--cms-muted);
+  --soft:var(--cms-soft);
+  --line:var(--cms-line);
+  --radius-sm:var(--cms-radius-sm);
+  --radius:var(--cms-radius);
+  --radius-lg:var(--cms-radius-lg);
+  --font-body:var(--cms-font-ar),"IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-head:var(--cms-font-ar-head),var(--cms-font-ar),"IBM Plex Sans Arabic",system-ui,sans-serif;
+}
+html[lang="en"]{
+  --font-body:var(--cms-font-en),system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-head:var(--cms-font-en-head),var(--cms-font-en),system-ui,sans-serif;
+  --font-en:var(--cms-font-en),sans-serif;
+}
+
+/* ---- typography ---------------------------------------------------- */
+html{font-size:calc(100% * var(--cms-font-scale))}
+body,p,li,td,th,blockquote,label,figcaption,small,input,select,textarea,button,a,
+.hero-lead,.section-head p,.stat-card span,.trust-note{font-family:var(--font-body)}
+h1,h2,h3,h4,h5,h6,.hero h1,.section-head h2,.cta-panel h2,.page-hero h1{font-family:var(--font-head)}
+.latin,.kicker,.count,.route-code,.num,.index,.marquee span,.stat-card strong,
+.hmrb-card span,.demo-badge,.review-stars{font-family:var(--cms-font-latin),"Manrope",sans-serif}
+
+/* ---- hero backdrop -------------------------------------------------- */
+.hmrb-fallback{opacity:var(--cms-hero-img);filter:brightness(var(--cms-hero-bright)) saturate(1.15)}
+.hmrb-rows{opacity:var(--cms-hero-tiles)}
+.hmrb-vignette{background:radial-gradient(ellipse 60% 50% at 50% 42%,rgba(5,7,13,var(--cms-hero-vignette)) 0%,transparent 62%)}
+.hmrb-scrim{background:linear-gradient(180deg,
+  rgba(5,7,13,var(--cms-hero-scrim)) 0%,
+  rgba(5,7,13,calc(var(--cms-hero-scrim) * .1)) 30%,
+  rgba(5,7,13,calc(var(--cms-hero-scrim) * .8)) 75%,
+  rgba(5,7,13,calc(var(--cms-hero-scrim) + .35)) 100%)}
+@media(max-width:900px){.hmrb-rows{opacity:var(--cms-hero-tiles-mobile)}}
+
+/* ---- card imagery --------------------------------------------------- */
+.problem-card-fragmentation,.problem-card-activity,.problem-card-measurement{
+  background-size:cover;background-position:center}
+.problem-card-fragmentation{background-image:linear-gradient(180deg,
+  rgba(13,27,61,calc(var(--cms-problem-overlay) - .20)) 0%,
+  rgba(10,16,32,var(--cms-problem-overlay)) 55%,
+  rgba(10,16,32,calc(var(--cms-problem-overlay) + .44)) 100%),var(--cms-img-problem-1)}
+.problem-card-activity{background-image:linear-gradient(180deg,
+  rgba(13,27,61,calc(var(--cms-problem-overlay) - .20)) 0%,
+  rgba(10,16,32,var(--cms-problem-overlay)) 55%,
+  rgba(10,16,32,calc(var(--cms-problem-overlay) + .44)) 100%),var(--cms-img-problem-2)}
+.problem-card-measurement{background-image:linear-gradient(180deg,
+  rgba(13,27,61,calc(var(--cms-problem-overlay) - .20)) 0%,
+  rgba(10,16,32,var(--cms-problem-overlay)) 55%,
+  rgba(10,16,32,calc(var(--cms-problem-overlay) + .44)) 100%),var(--cms-img-problem-3)}
+.bento-card.branding,.bento-card.performance,.bento-card.web,
+.bento-card.content,.bento-card.tech{background-size:cover;background-position:center}
+.bento-card.branding{background-image:linear-gradient(145deg,
+  rgba(19,42,51,calc(var(--cms-card-overlay) - .03)),
+  rgba(19,42,51,calc(var(--cms-card-overlay) - .25))),var(--cms-img-bento-branding)}
+.bento-card.performance{background-image:linear-gradient(145deg,
+  rgba(18,59,74,calc(var(--cms-card-overlay) + .01)),
+  rgba(13,27,61,calc(var(--cms-card-overlay) + .10))),var(--cms-img-bento-performance)}
+.bento-card.web{background-image:linear-gradient(150deg,
+  rgba(11,15,19,var(--cms-card-overlay)),
+  rgba(11,15,19,calc(var(--cms-card-overlay) - .27))),var(--cms-img-bento-web)}
+.bento-card.content{background-image:linear-gradient(150deg,
+  rgba(11,15,19,var(--cms-card-overlay)),
+  rgba(11,15,19,calc(var(--cms-card-overlay) - .27))),var(--cms-img-bento-content)}
+.bento-card.tech{background-image:linear-gradient(150deg,
+  rgba(11,15,19,var(--cms-card-overlay)),
+  rgba(11,15,19,calc(var(--cms-card-overlay) - .27))),var(--cms-img-bento-tech)}

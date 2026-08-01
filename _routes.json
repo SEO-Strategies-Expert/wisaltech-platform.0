@@ -2,10 +2,12 @@
   "version": 1,
   "include": [
     "/en",
-    "/en/*"
+    "/en/*",
+    "/api/*"
   ],
   "exclude": [
     "/static/*",
-    "/images/*"
+    "/images/*",
+    "/assets/*"
   ]
 }
