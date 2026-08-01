@@ -500,9 +500,14 @@ function suggestPayRef(){return 'WT-'+Math.floor(1000+Math.random()*9000);}
 function cleanRef(v){return String(v||'').replace(/[^A-Za-z0-9-]/g,'').slice(0,24);}
 function toWesternDigits(v){return String(v||'').replace(/[٠-٩۰-۹]/g,d=>String(d.charCodeAt(0)&0xf));}
 function cleanAmount(v){const m=toWesternDigits(v).replace(/,/g,'').match(/[0-9]+(\.[0-9]+)?/);return m?m[0]:'';}
-/* Only ASCII-safe values (amount, ref, date) ever go into the URL - Arabic
-   names percent-encode into %D8%.. sequences that read as spam/phishing to
-   clients, so the name stays inside the WhatsApp message text instead. */
+/* Only ASCII-safe values (amount, ref, date) ever go into the PAY (invoice
+   request) link - Arabic names percent-encode into %D8%.. sequences that
+   read as spam/phishing on a cold "please pay" link, so the name stays
+   inside the WhatsApp message text instead for that one.
+   The RECEIPT link is different: it's sent only after payment (no ask, no
+   phishing risk) and the page/PDF is a standalone proof-of-payment document
+   that gets saved and forwarded on its own, so it must carry the client
+   name itself - it can't rely on the surrounding WhatsApp message text. */
 function buildLink(base){
   const amount=cleanAmount($('#payAmount')?.value), ref=cleanRef($('#payRef')?.value);
   const q=new URLSearchParams();
@@ -512,9 +517,9 @@ function buildLink(base){
 }
 function buildPayLink(base){return buildLink(base);}
 function buildReceiptLink(base){
-  const amount=cleanAmount($('#payAmount')?.value), ref=cleanRef($('#payRef')?.value), date=$('#rcptDate')?.value;
+  const name=$('#payName')?.value.trim(), amount=cleanAmount($('#payAmount')?.value), ref=cleanRef($('#payRef')?.value), date=$('#rcptDate')?.value;
   const q=new URLSearchParams();
-  if(amount)q.set('amount',amount); if(ref)q.set('ref',ref); if(date)q.set('date',date);
+  if(name)q.set('name',name); if(amount)q.set('amount',amount); if(ref)q.set('ref',ref); if(date)q.set('date',date);
   const qs=q.toString();
   return PAY_BASE_URL+base+(qs?'?'+qs:'');
 }
