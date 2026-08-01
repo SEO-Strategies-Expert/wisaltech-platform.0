@@ -130,8 +130,13 @@ def label_of(html):
     return text
 
 
+STRIP = re.compile(r' data-cms(?:-img|-icon)?="\d+"')
+
+
 def annotate(path, page_key):
-    src = io.open(path, encoding="utf-8", newline="").read()
+    # Start from a clean slate so re-runs are deterministic and always refresh
+    # the stored values.
+    src = STRIP.sub("", io.open(path, encoding="utf-8", newline="").read())
     walker = Walker(src)
     walker.feed(src)
     walker.close()
@@ -145,9 +150,21 @@ def annotate(path, page_key):
 
     # Nodes that live inside an <svg> must not be treated as text.
     svg_spans = [(n.start, n.inner_end) for n in nodes if n.tag == "svg"]
+    header_spans = [(n.start, n.inner_end) for n in nodes if n.tag == "header"]
+    footer_spans = [(n.start, n.inner_end) for n in nodes if n.tag == "footer"]
+
+    def inside(node, spans):
+        return any(s < node.start < e for s, e in spans if e)
 
     def in_svg(node):
-        return any(s < node.start < e for s, e in svg_spans)
+        return inside(node, svg_spans)
+
+    def group_for(node):
+        if inside(node, header_spans):
+            return "الهيدر والقائمة العلوية"
+        if inside(node, footer_spans):
+            return "التذييل"
+        return group or "المقدمة"
 
     for node in nodes:
         attrs = node.attrs
@@ -160,7 +177,7 @@ def annotate(path, page_key):
             n_img += 1
             key = str(n_img)
             inserts.append((node.tag_end - 1, ' data-cms-img="%s"' % key))
-            images[key] = {"src": src_val, "alt": attrs.get("alt", ""), "group": group}
+            images[key] = {"src": src_val, "alt": attrs.get("alt", ""), "group": group_for(node)}
             continue
 
         if node.tag == "svg":
@@ -180,7 +197,7 @@ def annotate(path, page_key):
             n_icon += 1
             key = str(n_icon)
             inserts.append((node.tag_end - 1, ' data-cms-icon="%s"' % key))
-            icons[key] = {"svg": inner.strip(), "group": group}
+            icons[key] = {"svg": inner.strip(), "group": group_for(node)}
             continue
 
         if node.tag not in TEXT_TAGS or "data-cms" in attrs or in_svg(node):
@@ -220,17 +237,20 @@ def annotate(path, page_key):
         if node.tag == "span" and not cls:
             continue
 
+        # A heading opens the section it titles, so it belongs to its own group.
+        if node.tag in ("h1", "h2") and not inside(node, header_spans) \
+                and not inside(node, footer_spans):
+            group = preview[:60]
+
         taken.append((node.start, node.inner_end))
         n_text += 1
         key = str(n_text)
         inserts.append((node.tag_end - 1, ' data-cms="%s"' % key))
-        field = {"tag": node.tag, "mode": mode, "value": value, "group": group}
+        field = {"tag": node.tag, "mode": mode, "value": value, "group": group_for(node)}
         m = HIGHLIGHT.search(value)
         if m and mode == "html":
             field["hl"] = "<%s%s>" % (m.group(1), m.group(2) or "")
         fields[key] = field
-        if node.tag in ("h1", "h2"):
-            group = preview[:60]
 
     for offset, text in sorted(inserts, key=lambda x: -x[0]):
         src = src[:offset] + text + src[offset:]
