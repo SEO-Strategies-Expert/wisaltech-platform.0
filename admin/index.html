@@ -135,6 +135,7 @@ input[type=range]{flex:1;accent-color:var(--accent)}
 .toast.ok{background:var(--accent)}
 .note{background:#FFFBEB;border:1px solid #FDE68A;border-radius:11px;padding:11px 13px;font-size:.8rem;line-height:1.75;margin-bottom:12px}
 .note.info{background:#EFF6FF;border-color:#BFDBFE}
+.hint{color:var(--muted);font-size:.72rem;margin:4px 2px 0;line-height:1.6}
 
 @media(max-width:1200px){.body{grid-template-columns:70px 1fr}.preview-wrap{display:none}
   .body.show-pv{grid-template-columns:70px 1fr}.body.show-pv .panel{display:none}.body.show-pv .preview-wrap{display:flex}}
@@ -462,28 +463,58 @@ function vLight(p){
 
 /* ---- payment links ---- */
 function vPayLinks(p){
-  p.innerHTML=`<h2>روابط الدفع</h2><p class="sub">أنشئ رابط فاتورة مخصص لعميل معيّن وأرسله له مباشرة عبر واتساب. الرابط يفتح له صفحة دفع جاهزة بتفاصيل التحويل البنكي وفوران.</p>
+  p.innerHTML=`<h2>روابط الدفع</h2><p class="sub">أدخل بيانات العميل مرة واحدة، ثم أرسل له رابط الفاتورة قبل الدفع، ورابط الإيصال بعد ما يأكد التحويل.</p>
   <div class="card">
+    <h3 style="margin:0 0 12px;font-size:.9rem">بيانات الفاتورة</h3>
     <div class="f"><label><b>اسم العميل</b></label><input type="text" id="payName" placeholder="مثال: أحمد محمد"></div>
     <div class="f"><label><b>المبلغ (ر.ق)</b></label><input type="text" id="payAmount" placeholder="مثال: 2500" inputmode="decimal"></div>
-    <div class="f"><label><b>الرقم المرجعي</b></label><input type="text" id="payRef" value="${suggestPayRef()}"></div>
-    <div class="f"><label><b>رابط الفاتورة</b></label><input type="text" id="payLinkAr" readonly></div>
+    <div class="f"><label><b>الرقم المرجعي</b></label><input type="text" id="payRef" value="${suggestPayRef()}">
+      <p class="hint">بالإنجليزية والأرقام فقط — عشان الرابط يفضل نظيف ومايشبهش السبام.</p></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 4px;font-size:.9rem">١. رابط الفاتورة <span style="color:var(--muted);font-weight:400">— أرسله قبل الدفع</span></h3>
+    <div class="f"><label><b>الرابط</b></label><input type="text" id="payLinkAr" readonly></div>
     <button class="btn btn-block" id="payCopyAr" style="margin-bottom:8px">نسخ الرابط (عربي)</button>
     <button class="btn btn-primary btn-block" id="payShareAr">مشاركة عبر واتساب (عربي)</button>
-  </div>
-  <div class="card">
-    <div class="f"><label><b>Invoice Link (English)</b></label><input type="text" id="payLinkEn" readonly></div>
+    <div class="f" style="margin-top:14px"><label><b>English link</b></label><input type="text" id="payLinkEn" readonly></div>
     <button class="btn btn-block" id="payCopyEn" style="margin-bottom:8px">نسخ الرابط (إنجليزي)</button>
     <button class="btn btn-primary btn-block" id="payShareEn">مشاركة عبر واتساب (إنجليزي)</button>
   </div>
+
+  <div class="card">
+    <h3 style="margin:0 0 4px;font-size:.9rem">٢. إيصال الاستلام <span style="color:var(--muted);font-weight:400">— أرسله بعد تأكيد التحويل</span></h3>
+    <div class="f"><label><b>تاريخ الاستلام</b></label><input type="date" id="rcptDate"></div>
+    <div class="f"><label><b>الرابط</b></label><input type="text" id="rcptLinkAr" readonly></div>
+    <button class="btn btn-block" id="rcptCopyAr" style="margin-bottom:8px">نسخ رابط الإيصال (عربي)</button>
+    <button class="btn btn-primary btn-block" id="rcptShareAr">مشاركة عبر واتساب (عربي)</button>
+    <div class="f" style="margin-top:14px"><label><b>English receipt link</b></label><input type="text" id="rcptLinkEn" readonly></div>
+    <button class="btn btn-block" id="rcptCopyEn" style="margin-bottom:8px">نسخ رابط الإيصال (إنجليزي)</button>
+    <button class="btn btn-primary btn-block" id="rcptShareEn">مشاركة عبر واتساب (إنجليزي)</button>
+  </div>
+
   <div class="card"><h3 style="margin:0 0 10px;font-size:.9rem">آخر الروابط</h3><div id="payHistory"></div></div>
-  <div class="note">💡 زرار المشاركة يفتح واتساب ويسمح لك تختار محادثة العميل يدويًا لإرسال الرابط له.</div>`;
+  <div class="note">💡 أزرار المشاركة تفتح واتساب وتسمح لك تختار محادثة العميل يدويًا. الرابط نفسه لا يحتوي على الاسم حتى يظل نظيفًا وقصيرًا — الاسم موجود فقط داخل نص الرسالة.</div>`;
 }
 function suggestPayRef(){return 'WT-'+Math.floor(1000+Math.random()*9000);}
-function buildPayLink(base){
-  const name=$('#payName')?.value.trim(), amount=$('#payAmount')?.value.trim(), ref=$('#payRef')?.value.trim();
+function cleanRef(v){return String(v||'').replace(/[^A-Za-z0-9-]/g,'').slice(0,24);}
+function toWesternDigits(v){return String(v||'').replace(/[٠-٩۰-۹]/g,d=>String(d.charCodeAt(0)&0xf));}
+function cleanAmount(v){const m=toWesternDigits(v).replace(/,/g,'').match(/[0-9]+(\.[0-9]+)?/);return m?m[0]:'';}
+/* Only ASCII-safe values (amount, ref, date) ever go into the URL - Arabic
+   names percent-encode into %D8%.. sequences that read as spam/phishing to
+   clients, so the name stays inside the WhatsApp message text instead. */
+function buildLink(base){
+  const amount=cleanAmount($('#payAmount')?.value), ref=cleanRef($('#payRef')?.value);
   const q=new URLSearchParams();
-  if(name)q.set('name',name); if(amount)q.set('amount',amount); if(ref)q.set('ref',ref);
+  if(amount)q.set('amount',amount); if(ref)q.set('ref',ref);
+  const qs=q.toString();
+  return PAY_BASE_URL+base+(qs?'?'+qs:'');
+}
+function buildPayLink(base){return buildLink(base);}
+function buildReceiptLink(base){
+  const amount=cleanAmount($('#payAmount')?.value), ref=cleanRef($('#payRef')?.value), date=$('#rcptDate')?.value;
+  const q=new URLSearchParams();
+  if(amount)q.set('amount',amount); if(ref)q.set('ref',ref); if(date)q.set('date',date);
   const qs=q.toString();
   return PAY_BASE_URL+base+(qs?'?'+qs:'');
 }
@@ -496,7 +527,7 @@ function payHistorySave(entry){
 function payHistoryRender(){
   const el=$('#payHistory'); if(!el)return;
   const list=payHistoryLoad();
-  el.innerHTML=list.length?list.map(it=>`<div class="row"><label>${esc(it.name||'—')} · ${esc(it.amount||'—')} ر.ق · ${esc(it.ref||'')}</label>
+  el.innerHTML=list.length?list.map(it=>`<div class="row"><label>${esc(it.name||'—')} · ${esc(it.amount||'—')} ر.ق · ${esc(it.ref||'')} ${it.kind==='receipt'?' · إيصال':''}</label>
     <button class="btn btn-sm" data-copylink="${esc(it.link)}">نسخ</button></div>`).join('')
     :'<p class="sub" style="margin:0">لا توجد روابط بعد.</p>';
   el.querySelectorAll('[data-copylink]').forEach(b=>b.addEventListener('click',()=>{copyText(b.dataset.copylink);toast('تم نسخ الرابط');}));
@@ -574,23 +605,39 @@ function wire(){
     const d=pvDoc(),el=d&&d.querySelector(`[data-cms-icon="${k}"]`);if(el)el.innerHTML=svg;
     render();}));
 
-  const payLinkAr=$('#payLinkAr'),payLinkEn=$('#payLinkEn');
+  const payLinkAr=$('#payLinkAr'),payLinkEn=$('#payLinkEn'),rcptLinkAr=$('#rcptLinkAr'),rcptLinkEn=$('#rcptLinkEn'),rcptDate=$('#rcptDate');
   if(payLinkAr){
-    const refresh=()=>{payLinkAr.value=buildPayLink('/pay/');payLinkEn.value=buildPayLink('/en/pay/');};
-    ['#payName','#payAmount','#payRef'].forEach(sel=>$(sel).addEventListener('input',refresh));
+    if(rcptDate&&!rcptDate.value){const t=new Date();rcptDate.value=t.toISOString().slice(0,10);}
+    const refresh=()=>{
+      payLinkAr.value=buildPayLink('/pay/');payLinkEn.value=buildPayLink('/en/pay/');
+      rcptLinkAr.value=buildReceiptLink('/receipt/');rcptLinkEn.value=buildReceiptLink('/en/receipt/');
+    };
+    ['#payName','#payAmount','#payRef','#rcptDate'].forEach(sel=>$(sel).addEventListener('input',refresh));
     refresh();
-    const record=()=>payHistorySave({name:$('#payName').value.trim(),amount:$('#payAmount').value.trim(),
-      ref:$('#payRef').value.trim(),link:payLinkAr.value});
-    $('#payCopyAr').addEventListener('click',()=>{copyText(payLinkAr.value);toast('تم نسخ رابط الفاتورة');record();});
-    $('#payCopyEn').addEventListener('click',()=>{copyText(payLinkEn.value);toast('تم نسخ الرابط الإنجليزي');record();});
+    const record=(kind,link)=>payHistorySave({name:$('#payName').value.trim(),amount:$('#payAmount').value.trim(),
+      ref:$('#payRef').value.trim(),link,kind});
+    $('#payCopyAr').addEventListener('click',()=>{copyText(payLinkAr.value);toast('تم نسخ رابط الفاتورة');record('pay',payLinkAr.value);});
+    $('#payCopyEn').addEventListener('click',()=>{copyText(payLinkEn.value);toast('تم نسخ الرابط الإنجليزي');record('pay',payLinkEn.value);});
     $('#payShareAr').addEventListener('click',()=>{
       const name=$('#payName').value.trim();
       const msg=(name?`مرحبًا ${name} 👋\n`:'')+`إليك رابط إتمام الدفع الخاص بمشروعك مع وصال تك:\n${payLinkAr.value}`;
-      window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');record();});
+      window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');record('pay',payLinkAr.value);});
     $('#payShareEn').addEventListener('click',()=>{
       const name=$('#payName').value.trim();
       const msg=(name?`Hi ${name} 👋\n`:'')+`Here is your Wisal Tech payment link:\n${payLinkEn.value}`;
-      window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');record();});
+      window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');record('pay',payLinkEn.value);});
+
+    $('#rcptCopyAr').addEventListener('click',()=>{copyText(rcptLinkAr.value);toast('تم نسخ رابط الإيصال');record('receipt',rcptLinkAr.value);});
+    $('#rcptCopyEn').addEventListener('click',()=>{copyText(rcptLinkEn.value);toast('تم نسخ رابط الإيصال الإنجليزي');record('receipt',rcptLinkEn.value);});
+    $('#rcptShareAr').addEventListener('click',()=>{
+      const name=$('#payName').value.trim();
+      const msg=(name?`مرحبًا ${name} 👋\n`:'')+`تم استلام دفعتك بنجاح ✅، وهذا إيصال الاستلام:\n${rcptLinkAr.value}`;
+      window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');record('receipt',rcptLinkAr.value);});
+    $('#rcptShareEn').addEventListener('click',()=>{
+      const name=$('#payName').value.trim();
+      const msg=(name?`Hi ${name} 👋\n`:'')+`Your payment has been received ✅. Here is your receipt:\n${rcptLinkEn.value}`;
+      window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');record('receipt',rcptLinkEn.value);});
+
     payHistoryRender();
   }
 }

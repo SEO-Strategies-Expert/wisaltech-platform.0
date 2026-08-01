@@ -12051,7 +12051,7 @@
     "39": {
      "tag": "strong",
      "mode": "html",
-     "value": "+974 7167 5716",
+     "value": "7167 5716",
      "group": "&#9889; Fawran — Instant Transfer"
     },
     "40": {
@@ -12802,6 +12802,307 @@
    },
    "icons": {},
    "title": "سياسة الخصوصية — EN",
+   "lang": "en"
+  },
+  "en/receipt/index.html": {
+   "fields": {
+    "1": {
+     "tag": "strong",
+     "mode": "html",
+     "value": "Wisal Tech",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "2": {
+     "tag": "small",
+     "mode": "html",
+     "value": "SMART MARKETING · SUSTAINABLE GROWTH",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "3": {
+     "tag": "button",
+     "mode": "html",
+     "value": "☰",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "4": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Home",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "5": {
+     "tag": "summary",
+     "mode": "html",
+     "value": "Services",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "6": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Branding &amp; Identity",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "7": {
+     "tag": "a",
+     "mode": "html",
+     "value": "SEO &amp; Organic Growth",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "8": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Digital Marketing",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "9": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Web Development",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "10": {
+     "tag": "a",
+     "mode": "html",
+     "value": "ERP &amp; Business Systems",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "11": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Graphic Design",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "12": {
+     "tag": "a",
+     "mode": "html",
+     "value": "NFC Digital Cards",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "13": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Printing",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "14": {
+     "tag": "a",
+     "mode": "html",
+     "value": "IT &amp; Office Technology",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "15": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Work",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "16": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Insights",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "17": {
+     "tag": "a",
+     "mode": "html",
+     "value": "About",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "18": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Contact",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "19": {
+     "tag": "a",
+     "mode": "html",
+     "value": "AR",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "20": {
+     "tag": "a",
+     "mode": "html",
+     "value": "EN",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "21": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Start a Project",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "22": {
+     "tag": "span",
+     "mode": "html",
+     "value": "RECEIPT",
+     "group": "المقدمة"
+    },
+    "23": {
+     "tag": "h1",
+     "mode": "html",
+     "value": "Payment Received Successfully",
+     "group": "Payment Received Successfully"
+    },
+    "24": {
+     "tag": "p",
+     "mode": "html",
+     "value": "Thank you — this receipt confirms Wisal Tech has received the following payment.",
+     "group": "Payment Received Successfully"
+    },
+    "25": {
+     "tag": "span",
+     "mode": "html",
+     "value": "—",
+     "group": "Payment Received Successfully"
+    },
+    "26": {
+     "tag": "button",
+     "mode": "html",
+     "value": "🖨️ Print / Save PDF",
+     "group": "Payment Received Successfully"
+    },
+    "27": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Message Us",
+     "group": "Payment Received Successfully"
+    },
+    "28": {
+     "tag": "p",
+     "mode": "html",
+     "value": "This receipt is issued electronically by Wisal Tech and does not require a signature.<br>For any question about this payment, message us on WhatsApp above.",
+     "group": "Payment Received Successfully"
+    },
+    "29": {
+     "tag": "strong",
+     "mode": "html",
+     "value": "Wisal Tech",
+     "group": "التذييل"
+    },
+    "30": {
+     "tag": "small",
+     "mode": "html",
+     "value": "SMART MARKETING · SUSTAINABLE GROWTH",
+     "group": "التذييل"
+    },
+    "31": {
+     "tag": "p",
+     "mode": "html",
+     "value": "A Qatar-founded virtual company connecting strategy, creativity, technology and performance to build stronger brands and measurable growth.",
+     "group": "التذييل"
+    },
+    "32": {
+     "tag": "h4",
+     "mode": "html",
+     "value": "Company",
+     "group": "التذييل"
+    },
+    "33": {
+     "tag": "a",
+     "mode": "html",
+     "value": "About",
+     "group": "التذييل"
+    },
+    "34": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Selected Work",
+     "group": "التذييل"
+    },
+    "35": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Insights",
+     "group": "التذييل"
+    },
+    "36": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Contact",
+     "group": "التذييل"
+    },
+    "37": {
+     "tag": "h4",
+     "mode": "html",
+     "value": "Core Services",
+     "group": "التذييل"
+    },
+    "38": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Branding &amp; Identity",
+     "group": "التذييل"
+    },
+    "39": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Web Development",
+     "group": "التذييل"
+    },
+    "40": {
+     "tag": "a",
+     "mode": "html",
+     "value": "SEO &amp; Organic Growth",
+     "group": "التذييل"
+    },
+    "41": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Digital Marketing",
+     "group": "التذييل"
+    },
+    "42": {
+     "tag": "h4",
+     "mode": "html",
+     "value": "Contact",
+     "group": "التذييل"
+    },
+    "43": {
+     "tag": "a",
+     "mode": "html",
+     "value": "hello@wisaltech.com",
+     "group": "التذييل"
+    },
+    "44": {
+     "tag": "a",
+     "mode": "html",
+     "value": "+974 3380 3318",
+     "group": "التذييل"
+    },
+    "45": {
+     "tag": "a",
+     "mode": "html",
+     "value": "@wisaltech.qa",
+     "group": "التذييل"
+    },
+    "46": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Privacy Policy",
+     "group": "التذييل"
+    },
+    "47": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Terms of Use",
+     "group": "التذييل"
+    }
+   },
+   "images": {
+    "1": {
+     "src": "/assets/brand/wisal-tech-logo.png",
+     "alt": "Wisal Tech logo",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "2": {
+     "src": "/assets/brand/wisal-tech-logo.png",
+     "alt": "Wisal Tech logo",
+     "group": "التذييل"
+    }
+   },
+   "icons": {},
+   "title": "en/receipt — EN",
    "lang": "en"
   },
   "en/services/index.html": {
@@ -23197,26 +23498,26 @@
     "36": {
      "tag": "h2",
      "mode": "html",
-     "value": "&#9889; فوران — تحويل فوري",
-     "group": "&#9889; فوران — تحويل فوري"
+     "value": "&#9889; فوراً — تحويل فوري",
+     "group": "&#9889; فوراً — تحويل فوري"
     },
     "37": {
      "tag": "small",
      "mode": "html",
-     "value": "الدفع عبر فوران باستخدام رقم الهاتف",
-     "group": "&#9889; فوران — تحويل فوري"
+     "value": "الدفع عبر فوراً باستخدام رقم الهاتف",
+     "group": "&#9889; فوراً — تحويل فوري"
     },
     "38": {
      "tag": "strong",
      "mode": "html",
-     "value": "+974 7167 5716",
-     "group": "&#9889; فوران — تحويل فوري"
+     "value": "7167 5716",
+     "group": "&#9889; فوراً — تحويل فوري"
     },
     "39": {
      "tag": "p",
      "mode": "html",
-     "value": "اختر \"فوران\" كطريقة التحويل داخل تطبيق بنكك لتحويل المبلغ خلال ثوانٍ.",
-     "group": "&#9889; فوران — تحويل فوري"
+     "value": "اختر \"فوراً\" كطريقة التحويل داخل تطبيق بنكك لتحويل المبلغ خلال ثوانٍ.",
+     "group": "&#9889; فوراً — تحويل فوري"
     },
     "40": {
      "tag": "h2",
@@ -23858,6 +24159,325 @@
     }
    },
    "title": "سياسة الخصوصية — AR",
+   "lang": "ar"
+  },
+  "receipt/index.html": {
+   "fields": {
+    "1": {
+     "tag": "strong",
+     "mode": "html",
+     "value": "وصال تك",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "2": {
+     "tag": "span",
+     "mode": "html",
+     "value": "SMART MARKETING · SUSTAINABLE GROWTH",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "3": {
+     "tag": "a",
+     "mode": "html",
+     "value": "الرئيسية",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "4": {
+     "tag": "a",
+     "mode": "text",
+     "value": "خدماتنا",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "5": {
+     "tag": "a",
+     "mode": "text",
+     "value": "كل الخدمات ",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "6": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Branding",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "7": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Search Engine Optimization (SEO)",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "8": {
+     "tag": "a",
+     "mode": "html",
+     "value": "ERP Solution",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "9": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Graphic Designing",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "10": {
+     "tag": "a",
+     "mode": "html",
+     "value": "NFC Digital Cards",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "11": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Web Development",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "12": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Digital Marketing",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "13": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Digital Offset & Printing",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "14": {
+     "tag": "a",
+     "mode": "html",
+     "value": "IT & Office Tech Solutions",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "15": {
+     "tag": "a",
+     "mode": "html",
+     "value": "الأعمال",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "16": {
+     "tag": "a",
+     "mode": "html",
+     "value": "المدونة",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "17": {
+     "tag": "a",
+     "mode": "html",
+     "value": "عن وصال",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "18": {
+     "tag": "a",
+     "mode": "html",
+     "value": "AR",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "19": {
+     "tag": "a",
+     "mode": "html",
+     "value": "EN",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "20": {
+     "tag": "a",
+     "mode": "text",
+     "value": "ابدأ مشروعك",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "21": {
+     "tag": "span",
+     "mode": "html",
+     "value": "/ RECEIPT",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "22": {
+     "tag": "h1",
+     "mode": "html",
+     "value": "تم استلام دفعتك بنجاح",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "23": {
+     "tag": "p",
+     "mode": "html",
+     "value": "شكرًا لك، هذا إيصال يوثّق استلام وصال تك للمبلغ التالي.",
+     "group": "الهيدر والقائمة العلوية"
+    },
+    "24": {
+     "tag": "span",
+     "mode": "html",
+     "value": "—",
+     "group": "المقدمة"
+    },
+    "25": {
+     "tag": "button",
+     "mode": "html",
+     "value": "🖨️ طباعة / حفظ PDF",
+     "group": "المقدمة"
+    },
+    "26": {
+     "tag": "a",
+     "mode": "html",
+     "value": "تواصل معنا",
+     "group": "المقدمة"
+    },
+    "27": {
+     "tag": "p",
+     "mode": "html",
+     "value": "هذا الإيصال صادر إلكترونيًا من وصال تك ولا يتطلب توقيعًا.<br>لأي استفسار حول هذه الدفعة، راسلنا عبر واتساب على الرقم أعلاه.",
+     "group": "المقدمة"
+    },
+    "28": {
+     "tag": "strong",
+     "mode": "html",
+     "value": "وصال تك",
+     "group": "التذييل"
+    },
+    "29": {
+     "tag": "span",
+     "mode": "html",
+     "value": "SMART MARKETING · SUSTAINABLE GROWTH",
+     "group": "التذييل"
+    },
+    "30": {
+     "tag": "p",
+     "mode": "html",
+     "value": "نربط الاستراتيجية والإبداع والأداء والتقنية داخل نظام نمو واضح وقابل للقياس.",
+     "group": "التذييل"
+    },
+    "31": {
+     "tag": "h4",
+     "mode": "html",
+     "value": "الموقع",
+     "group": "التذييل"
+    },
+    "32": {
+     "tag": "a",
+     "mode": "html",
+     "value": "الخدمات",
+     "group": "التذييل"
+    },
+    "33": {
+     "tag": "a",
+     "mode": "html",
+     "value": "الأعمال",
+     "group": "التذييل"
+    },
+    "34": {
+     "tag": "a",
+     "mode": "html",
+     "value": "عن وصال",
+     "group": "التذييل"
+    },
+    "35": {
+     "tag": "a",
+     "mode": "html",
+     "value": "المدونة",
+     "group": "التذييل"
+    },
+    "36": {
+     "tag": "h4",
+     "mode": "html",
+     "value": "حلول رئيسية",
+     "group": "التذييل"
+    },
+    "37": {
+     "tag": "a",
+     "mode": "html",
+     "value": "الهوية البصرية",
+     "group": "التذييل"
+    },
+    "38": {
+     "tag": "a",
+     "mode": "html",
+     "value": "SEO والنمو",
+     "group": "التذييل"
+    },
+    "39": {
+     "tag": "a",
+     "mode": "html",
+     "value": "إدارة السوشيال",
+     "group": "التذييل"
+    },
+    "40": {
+     "tag": "a",
+     "mode": "html",
+     "value": "المواقع والمنتجات",
+     "group": "التذييل"
+    },
+    "41": {
+     "tag": "h4",
+     "mode": "html",
+     "value": "ابدأ",
+     "group": "التذييل"
+    },
+    "42": {
+     "tag": "a",
+     "mode": "html",
+     "value": "أرسل Brief",
+     "group": "التذييل"
+    },
+    "43": {
+     "tag": "a",
+     "mode": "html",
+     "value": "اطلب عرضًا مخصصًا",
+     "group": "التذييل"
+    },
+    "44": {
+     "tag": "a",
+     "mode": "html",
+     "value": "Instagram",
+     "group": "التذييل"
+    },
+    "45": {
+     "tag": "a",
+     "mode": "html",
+     "value": "wisaltech.com",
+     "group": "التذييل"
+    },
+    "46": {
+     "tag": "span",
+     "mode": "html",
+     "value": "DATA · STRATEGY · CREATIVE · GROWTH",
+     "group": "التذييل"
+    },
+    "47": {
+     "tag": "a",
+     "mode": "html",
+     "value": "سياسة الخصوصية",
+     "group": "التذييل"
+    },
+    "48": {
+     "tag": "a",
+     "mode": "html",
+     "value": "شروط الاستخدام",
+     "group": "التذييل"
+    },
+    "49": {
+     "tag": "a",
+     "mode": "html",
+     "value": "AR",
+     "group": "التذييل"
+    },
+    "50": {
+     "tag": "a",
+     "mode": "html",
+     "value": "EN",
+     "group": "التذييل"
+    },
+    "51": {
+     "tag": "a",
+     "mode": "html",
+     "value": "ناقش مشروعًا مشابهًا",
+     "group": "المقدمة"
+    }
+   },
+   "images": {},
+   "icons": {
+    "1": {
+     "svg": "<path d=\"M4 7h16M4 12h16M4 17h16\"/>",
+     "group": "الهيدر والقائمة العلوية"
+    }
+   },
+   "title": "receipt — AR",
    "lang": "ar"
   },
   "services/index.html": {

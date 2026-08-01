@@ -11,6 +11,14 @@
   X-Robots-Tag: noindex, nofollow
 /en/pay/*
   X-Robots-Tag: noindex, nofollow
+/receipt
+  X-Robots-Tag: noindex, nofollow
+/receipt/*
+  X-Robots-Tag: noindex, nofollow
+/en/receipt
+  X-Robots-Tag: noindex, nofollow
+/en/receipt/*
+  X-Robots-Tag: noindex, nofollow
 
 /data/*
   Cache-Control: public, max-age=0, must-revalidate
