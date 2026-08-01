@@ -13,6 +13,7 @@
  *   GITHUB_BRANCH  optional, defaults to main
  */
 
+const BUILD = 4;          // bump on every worker change to verify what is live
 const COOKIE = 'wt_cms';
 const SESSION_HOURS = 12;
 const INLINE_TAGS = ['em', 'strong', 'b', 'i', 'u', 'small', 'sup', 'sub', 'br', 'span'];
@@ -237,7 +238,8 @@ async function handleApi(request, env, url) {
   const route = url.pathname.replace(/^\/api\/cms\/?/, '');
 
   if (route === 'config') {
-    return json({ configured: configured(env), authed: await authed(request, env) });
+    // `build` lets us confirm from the outside which deployment is live.
+    return json({ build: BUILD, configured: configured(env), authed: await authed(request, env) });
   }
 
   if (route === 'login' && request.method === 'POST') {
