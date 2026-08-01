@@ -181,7 +181,7 @@
     "30": {
      "tag": "h2",
      "mode": "html",
-     "value": "موثوقون من <span class=\"section-title-accent\">علامات حقيقية</span>.",
+     "value": "موثوقون من <span class=\"section-title-accent\">علامات حقيقية</span>",
      "group": "موثوقون من علامات حقيقية.",
      "hl": "<span class=\"section-title-accent\">"
     },
@@ -212,7 +212,7 @@
     "35": {
      "tag": "h2",
      "mode": "html",
-     "value": "المشكلة ليست نقص الخدمات؛ بل <span class=\"section-title-accent\">غياب الترابط</span> بينها.",
+     "value": "المشكلة ليست نقص الخدمات؛ بل <span class=\"section-title-accent\">غياب الترابط</span> بينها",
      "group": "المشكلة ليست نقص الخدمات؛ بل غياب الترابط بينها.",
      "hl": "<span class=\"section-title-accent\">"
     },
