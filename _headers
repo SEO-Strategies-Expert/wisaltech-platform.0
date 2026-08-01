@@ -1,7 +1,16 @@
 # Cloudflare Pages custom headers
 #
 # Note: Pages ignores Cache-Control here for anything under /static, so the
-# theme stylesheet is served through the worker at /api/theme.css instead.
+# theme stylesheet is served through the worker at /api/theme instead.
+
+/pay
+  X-Robots-Tag: noindex, nofollow
+/pay/*
+  X-Robots-Tag: noindex, nofollow
+/en/pay
+  X-Robots-Tag: noindex, nofollow
+/en/pay/*
+  X-Robots-Tag: noindex, nofollow
 
 /data/*
   Cache-Control: public, max-age=0, must-revalidate
