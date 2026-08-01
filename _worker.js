@@ -360,6 +360,8 @@ async function handleApi(request, env, url) {
   return json({ error: 'not found' }, 404);
 }
 
+const THEME_CSS = '/static/css/wisal-theme.css';
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -370,6 +372,18 @@ export default {
         return json({ error: String((err && err.message) || err) }, 500);
       }
     }
+
+    // The CMS rewrites the theme stylesheet on every save. Cloudflare's default
+    // four-hour asset cache would hide colour and font changes from visitors,
+    // and a `_headers` rule is ignored for this folder, so set it here where we
+    // are certain it applies. The ETag still lets browsers answer with a 304.
+    if (url.pathname === THEME_CSS) {
+      const res = await env.ASSETS.fetch(request);
+      const out = new Response(res.body, res);
+      out.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+      return out;
+    }
+
     return env.ASSETS.fetch(request);
   },
 };
