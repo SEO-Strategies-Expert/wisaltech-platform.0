@@ -3,10 +3,10 @@
   "include": [
     "/en",
     "/en/*",
-    "/api/*",
-    "/static/css/wisal-theme.css"
+    "/api/*"
   ],
   "exclude": [
+    "/static/*",
     "/images/*",
     "/assets/*"
   ]

@@ -1,11 +1,7 @@
 # Cloudflare Pages custom headers
-
-# The CMS rewrites wisal-theme.css on every theme save, so it must never be
-# held in a browser cache - otherwise colour/font changes stay invisible for
-# hours. Pages only honours wildcard rules here, not exact file paths, so the
-# whole (tiny) css folder revalidates; unchanged files still answer 304.
-/static/css/*
-  Cache-Control: public, max-age=0, must-revalidate
+#
+# Note: Pages ignores Cache-Control here for anything under /static, so the
+# theme stylesheet is served through the worker at /api/theme.css instead.
 
 /data/*
   Cache-Control: public, max-age=0, must-revalidate

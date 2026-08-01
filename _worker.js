@@ -13,7 +13,7 @@
  *   GITHUB_BRANCH  optional, defaults to main
  */
 
-const BUILD = 4;          // bump on every worker change to verify what is live
+const BUILD = 5;          // bump on every worker change to verify what is live
 const COOKIE = 'wt_cms';
 const SESSION_HOURS = 12;
 const INLINE_TAGS = ['em', 'strong', 'b', 'i', 'u', 'small', 'sup', 'sub', 'br', 'span'];
@@ -362,11 +362,12 @@ async function handleApi(request, env, url) {
   return json({ error: 'not found' }, 404);
 }
 
-const THEME_CSS = '/static/css/wisal-theme.css';
+const THEME_SOURCE = '/static/css/wisal-theme.css';
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
     if (url.pathname.startsWith('/api/cms')) {
       try {
         return await handleApi(request, env, url);
@@ -375,13 +376,15 @@ export default {
       }
     }
 
-    // The CMS rewrites the theme stylesheet on every save. Cloudflare's default
-    // four-hour asset cache would hide colour and font changes from visitors,
-    // and a `_headers` rule is ignored for this folder, so set it here where we
-    // are certain it applies. The ETag still lets browsers answer with a 304.
-    if (url.pathname === THEME_CSS) {
-      const res = await env.ASSETS.fetch(request);
+    // Pages serves everything under /static with a four-hour browser cache and
+    // ignores both `_headers` rules and `_routes.json` includes for it, which
+    // would hide colour and font changes for hours after a save. Every page
+    // therefore links the theme through this worker-owned path, where we do
+    // control the headers. The ETag still lets browsers answer 304.
+    if (url.pathname === '/api/theme.css') {
+      const res = await env.ASSETS.fetch(new Request(new URL(THEME_SOURCE, url.origin), request));
       const out = new Response(res.body, res);
+      out.headers.set('Content-Type', 'text/css; charset=utf-8');
       out.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
       return out;
     }
